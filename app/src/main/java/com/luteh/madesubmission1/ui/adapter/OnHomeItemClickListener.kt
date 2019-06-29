@@ -1,6 +1,6 @@
 package com.luteh.madesubmission1.ui.adapter
 
-import com.luteh.madesubmission1.model.HomeData
+import com.luteh.madesubmission1.data.model.HomeData
 
 /**
  * Created by Luthfan Maftuh on 6/24/2019.

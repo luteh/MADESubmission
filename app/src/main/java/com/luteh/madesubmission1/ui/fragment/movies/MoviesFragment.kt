@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.luteh.madesubmission1.R
-import com.luteh.madesubmission1.common.Constants
+import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.HomeDataFactory
-import com.luteh.madesubmission1.model.HomeData
+import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.adapter.MainAdapter
 import com.luteh.madesubmission1.ui.adapter.OnHomeItemClickListener
@@ -52,6 +52,6 @@ class MoviesFragment : Fragment(), OnHomeItemClickListener {
     }
 
     override fun onItemClicked(data: HomeData) {
-        startActivity<DetailActivity>(Constants.KEY_BUNDLE_HOME_DATA to data)
+        startActivity<DetailActivity>(AppConstant.KEY_BUNDLE_HOME_DATA to data)
     }
 }

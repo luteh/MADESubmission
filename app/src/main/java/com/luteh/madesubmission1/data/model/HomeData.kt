@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.model
+package com.luteh.madesubmission1.data.model
 
 import android.os.Parcel
 import android.os.Parcelable

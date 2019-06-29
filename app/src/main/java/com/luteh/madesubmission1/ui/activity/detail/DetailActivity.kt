@@ -3,8 +3,8 @@ package com.luteh.madesubmission1.ui.activity.detail
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
-import com.luteh.madesubmission1.common.Constants
-import com.luteh.madesubmission1.model.HomeData
+import com.luteh.madesubmission1.common.constant.AppConstant
+import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.R
 import kotlinx.android.synthetic.main.detail_activity.*
 
@@ -17,7 +17,7 @@ class DetailActivity : AppCompatActivity() {
         title = "Detail"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val homeData: HomeData = intent.getParcelableExtra(Constants.KEY_BUNDLE_HOME_DATA)
+        val homeData: HomeData = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
 
         setupView(homeData)
     }
