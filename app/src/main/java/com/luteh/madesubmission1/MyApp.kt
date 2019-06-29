@@ -20,7 +20,7 @@ class MyApp : Application(), KodeinAware {
         import(androidXModule(this@MyApp))
 
         // Provide instance
-        bind() from singleton { ApiServiceInterface(instance()) }
+        bind() from singleton { ApiServiceInterface() }
 
     }
 }
