@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.HomeDataFactory
 import com.luteh.madesubmission1.data.model.HomeData
@@ -19,7 +20,10 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by Luthfan Maftuh on 6/25/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class TvShowFragment : Fragment(), OnHomeItemClickListener {
+class TvShowFragment : BaseFragment(), OnHomeItemClickListener, TvShowNavigator {
+
+    private lateinit var viewModel: TvShowViewModel
+
     private val movieAdapter = MainAdapter()
 
     override fun onCreateView(
@@ -33,7 +37,13 @@ class TvShowFragment : Fragment(), OnHomeItemClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initViewModel()
         setupRecyclerView()
+    }
+
+    private fun initViewModel() {
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(TvShowViewModel::class.java)
+        viewModel.mNavigator = this
     }
 
     private fun setupRecyclerView() {

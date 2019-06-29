@@ -4,6 +4,7 @@ import android.app.Application
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.MyRepositoryImpl
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
+import com.luteh.madesubmission1.ui.MyViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -23,9 +24,9 @@ class MyApp : Application(), KodeinAware {
 
         // Provide instance
         bind() from singleton { ApiServiceInterface() }
-
-        // Inject Repository
         bind<MyRepository>() with singleton { MyRepositoryImpl(instance()) }
 
+        // Inject View Model Factory
+        bind() from provider { MyViewModelFactory(instance()) }
     }
 }
