@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.detail.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default">
+
+        <!-- Header -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/line_center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/iv_detail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_detail_genres"
+            app:layout_constraintEnd_toStartOf="@+id/line_center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_detail_title_label"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:text="@string/label_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/line_center_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_detail_title"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_title_label"
+            tools:text="Avengers: Infinity War" />
+
+        <TextView
+            android:id="@+id/tv_detail_release_date_label"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/label_release_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_title" />
+
+        <TextView
+            android:id="@+id/tv_detail_release_date"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_release_date_label"
+            tools:text="April 23, 2018" />
+
+        <TextView
+            android:id="@+id/tv_detail_language_label"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/label_original_language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_release_date" />
+
+        <TextView
+            android:id="@+id/tv_detail_language"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_language_label"
+            tools:text="English" />
+
+        <TextView
+            android:id="@+id/tv_detail_runtime_label"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/label_runtime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_language" />
+
+        <TextView
+            android:id="@+id/tv_detail_runtime"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_runtime_label"
+            tools:text="2h 29m" />
+
+        <TextView
+            android:id="@+id/tv_detail_genres_label"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/label_genres"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_runtime" />
+
+        <TextView
+            android:id="@+id/tv_detail_genres"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_detail_title_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_genres_label"
+            tools:text="Fantasy, Romance, Seinen, Adventure, Drama, Action, Harem" />
+
+        <!-- Overview -->
+
+        <TextView
+            android:id="@+id/tv_overview"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large__"
+            android:text="@string/label_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_detail" />
+
+        <TextView
+            android:id="@+id/tv_detail_overview"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textSize="@dimen/text_small_14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_overview"
+            tools:text="As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

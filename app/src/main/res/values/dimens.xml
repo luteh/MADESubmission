@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_small_6">6dp</dimen>
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_default_">10dp</dimen>
+    <dimen name="margin_xdefault">11.5dp</dimen>
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_large_">14dp</dimen>
+    <dimen name="margin_large__">16dp</dimen>
+
+    <dimen name="text_small_14">14sp</dimen>
+</resources>
