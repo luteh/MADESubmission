@@ -11,24 +11,20 @@ import androidx.lifecycle.ViewModelProviders
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.HomeDataFactory
-import com.luteh.madesubmission1.data.model.HomeData
-import com.luteh.madesubmission1.ui.MyViewModelFactory
+import com.luteh.madesubmission1.data.model.movie.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.adapter.MainAdapter
 import com.luteh.madesubmission1.ui.adapter.OnHomeItemClickListener
+import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.jetbrains.anko.support.v4.startActivity
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class MoviesFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
+class MovieFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
 
     private lateinit var viewModel: MovieViewModel
 
@@ -47,11 +43,27 @@ class MoviesFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
 
         initViewModel()
         setupRecyclerView()
+
+        viewModel.getMovieData(Locale.getDefault().displayLanguage)
     }
 
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel::class.java)
         viewModel.mNavigator = this
+
+        viewModel.mIsLoading.observe(this, androidx.lifecycle.Observer {
+            if (it) {
+                pb_common_loading.visibility = View.VISIBLE
+                rv_main.visibility = View.INVISIBLE
+            } else {
+                pb_common_loading.visibility = View.INVISIBLE
+                rv_main.visibility = View.VISIBLE
+            }
+        })
+
+        viewModel.movieDatas.observe(this, androidx.lifecycle.Observer {
+            movieAdapter.setDataSource(it)
+        })
     }
 
     private fun setupRecyclerView() {
@@ -60,13 +72,10 @@ class MoviesFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
             adapter = movieAdapter
         }
 
-        movieAdapter.apply {
-            setDataSource(HomeDataFactory.getMovieDatas(context!!))
-            setItemClickListener(this@MoviesFragment)
-        }
+        movieAdapter.setItemClickListener(this@MovieFragment)
     }
 
-    override fun onItemClicked(data: HomeData) {
+    override fun onItemClicked(data: MovieData) {
         startActivity<DetailActivity>(AppConstant.KEY_BUNDLE_HOME_DATA to data)
     }
 }

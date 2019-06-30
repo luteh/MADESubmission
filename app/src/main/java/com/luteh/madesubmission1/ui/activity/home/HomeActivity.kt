@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.luteh.madesubmission1.*
-import com.luteh.madesubmission1.ui.fragment.movies.MoviesFragment
+import com.luteh.madesubmission1.ui.fragment.movies.MovieFragment
 import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_activity.*
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupView() {
         val pagerAdapter = HomePagerAdapter(supportFragmentManager)
         pagerAdapter.apply {
-            addFragment(MoviesFragment(), getString(R.string.title_movie))
+            addFragment(MovieFragment(), getString(R.string.title_movie))
             addFragment(TvShowFragment(), getString(R.string.title_tv_show))
         }
 

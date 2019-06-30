@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.constant.AppConstant
+import com.luteh.madesubmission1.data.model.movie.MovieData
 import kotlinx.android.synthetic.main.home_item.view.*
 
 /**
@@ -17,7 +20,7 @@ private lateinit var onHomeItemClickListener: OnHomeItemClickListener
 
 class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
-    private var dataSources: List<HomeData> = emptyList()
+    private var dataSources: List<MovieData> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder =
         MainViewHolder(
@@ -35,7 +38,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
         holder.bindTo(data)
     }
 
-    fun setDataSource(data: List<HomeData>) {
+    fun setDataSource(data: List<MovieData>) {
         dataSources = data
         notifyDataSetChanged()
     }
@@ -47,14 +50,19 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
 class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindTo(data: HomeData) {
+    fun bindTo(data: MovieData) {
 
         data.let {
             with(itemView) {
-                iv_main_item.setImageResource(it.imageResId)
+                //                iv_main_item.setImageResource(it.imageResId)
                 tv_main_title_item.text = it.title
                 tv_main_release_date_item.text = it.releaseDate
                 tv_main_overview_item.text = it.overview
+
+                Glide.with(itemView)
+                    .load(AppConstant.BASE_URL_IMAGE + it.posterPath)
+                    .dontAnimate()
+                    .into(iv_main_item)
 
                 setOnClickListener {
                     onHomeItemClickListener.onItemClicked(data)
