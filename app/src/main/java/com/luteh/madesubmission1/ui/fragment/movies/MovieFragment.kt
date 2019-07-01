@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.ui.fragment.movies
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
+import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
 import com.luteh.madesubmission1.data.model.movie.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
-import com.luteh.madesubmission1.ui.adapter.MainAdapter
-import com.luteh.madesubmission1.ui.adapter.OnHomeItemClickListener
+import com.luteh.madesubmission1.ui.fragment.movies.adapter.MovieAdapter
+import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -24,11 +27,13 @@ import java.util.*
  * A simple [Fragment] subclass.
  *
  */
-class MovieFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
+class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
+
+    private val TAG = "MovieFragment"
 
     private lateinit var viewModel: MovieViewModel
 
-    private val movieAdapter = MainAdapter()
+    private val movieAdapter = MovieAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +49,12 @@ class MovieFragment : BaseFragment(), OnHomeItemClickListener, MovieNavigator {
         initViewModel()
         setupRecyclerView()
 
-        viewModel.getMovieData(Locale.getDefault().displayLanguage)
+        viewModel.getMovieData(Commons.currentLanguage.value ?: LANGUAGE_CODE_ENGLISH)
+
+        Commons.currentLanguage.observe(this, androidx.lifecycle.Observer {
+            Log.d(TAG, "onActivityCreated: $it")
+            viewModel.getMovieData(it)
+        })
     }
 
     private fun initViewModel() {

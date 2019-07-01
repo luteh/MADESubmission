@@ -10,9 +10,19 @@ import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_activity.*
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.content.Intent
+import android.util.Log
+import com.luteh.madesubmission1.common.Commons
+import com.luteh.madesubmission1.common.Commons.currentLanguage
+import com.luteh.madesubmission1.common.constant.AppConstant
+import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
+import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
+import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
+
+    private val TAG = "HomeActivity"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +30,10 @@ class HomeActivity : AppCompatActivity() {
         title = "Home"
 
         setupView()
+
+        val currentLanguageCode = Locale.getDefault().toString()
+        Commons.currentLanguage.value =
+            if (currentLanguageCode.contains("en")) LANGUAGE_CODE_ENGLISH else LANGUAGE_CODE_INDONESIAN
     }
 
     private fun setupView() {

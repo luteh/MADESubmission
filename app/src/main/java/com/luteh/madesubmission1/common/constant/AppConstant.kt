@@ -11,4 +11,7 @@ object AppConstant {
     const val API_KEY = "e7e51ae93f8d998945ad19fb49e1bb5a"
 
     const val KEY_BUNDLE_HOME_DATA = "KEY_BUNDLE_HOME_DATA"
+
+    const val LANGUAGE_CODE_ENGLISH = "en-US"
+    const val LANGUAGE_CODE_INDONESIAN = "id-ID"
 }

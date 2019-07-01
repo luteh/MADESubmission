@@ -1,11 +1,10 @@
-package com.luteh.madesubmission1.ui.adapter
+package com.luteh.madesubmission1.ui.fragment.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.movie.MovieData
@@ -16,14 +15,14 @@ import kotlinx.android.synthetic.main.home_item.view.*
  * Email luthfanmaftuh@gmail.com
  */
 
-private lateinit var onHomeItemClickListener: OnHomeItemClickListener
+private lateinit var onMovieItemClickListener: OnMovieItemClickListener
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     private var dataSources: List<MovieData> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder =
-        MainViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+        MovieViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.home_item,
                 parent,
@@ -33,7 +32,7 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     override fun getItemCount(): Int = dataSources.size
 
-    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val data = dataSources[position]
         holder.bindTo(data)
     }
@@ -43,21 +42,25 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun setItemClickListener(listener: OnHomeItemClickListener) {
-        onHomeItemClickListener = listener
+    fun setItemClickListener(listener: OnMovieItemClickListener) {
+        onMovieItemClickListener = listener
     }
 }
 
-class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindTo(data: MovieData) {
 
         data.let {
             with(itemView) {
-                //                iv_main_item.setImageResource(it.imageResId)
                 tv_main_title_item.text = it.title
                 tv_main_release_date_item.text = it.releaseDate
-                tv_main_overview_item.text = it.overview
+
+                tv_main_overview_item.text = if (!it.overview.isNullOrEmpty()) {
+                    it.overview
+                } else {
+                    context.getString(R.string.label_message_no_overview)
+                }
 
                 Glide.with(itemView)
                     .load(AppConstant.BASE_URL_IMAGE + it.posterPath)
@@ -65,7 +68,7 @@ class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     .into(iv_main_item)
 
                 setOnClickListener {
-                    onHomeItemClickListener.onItemClicked(data)
+                    onMovieItemClickListener.onItemClicked(data)
                 }
             }
         }
