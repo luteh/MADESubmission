@@ -18,6 +18,7 @@ import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.OnTvShowItemClickLis
 import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.TvShowAdapter
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.no_connection.*
 import org.jetbrains.anko.support.v4.startActivity
 import java.util.*
 
@@ -53,6 +54,11 @@ class TvShowFragment : BaseFragment(), OnTvShowItemClickListener, TvShowNavigato
             Log.d(TAG, "onActivityCreated: $it")
             viewModel.getTvShowData(it)
         })
+
+        btn_no_connection_retry.setOnClickListener {
+            layout_no_connection_container.visibility = View.INVISIBLE
+            viewModel.getTvShowData(Commons.currentLanguage.value ?: AppConstant.LANGUAGE_CODE_ENGLISH)
+        }
     }
 
     private fun initViewModel() {
@@ -86,5 +92,10 @@ class TvShowFragment : BaseFragment(), OnTvShowItemClickListener, TvShowNavigato
 
     override fun onItemClicked(data: TvShowData) {
         startActivity<DetailActivity>(AppConstant.KEY_BUNDLE_HOME_DATA to data)
+    }
+
+    override fun onErrorGetTvShowData() {
+        layout_no_connection_container.visibility = View.VISIBLE
+        rv_main.visibility = View.INVISIBLE
     }
 }

@@ -29,7 +29,8 @@ class TvShowViewModel(private val myRepository: MyRepository) : BaseViewModel<Tv
                 .subscribe({ response ->
                     tvShowDatas.value = response.tvShowData
                 },
-                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}") })
+                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}")
+                    mNavigator?.onErrorGetTvShowData()})
         )
     }
 }

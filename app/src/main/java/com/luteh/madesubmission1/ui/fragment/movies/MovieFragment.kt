@@ -20,8 +20,10 @@ import com.luteh.madesubmission1.ui.fragment.movies.adapter.MovieAdapter
 import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.no_connection.*
+import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.startActivity
-import java.util.*
+import org.jetbrains.anko.yesButton
 
 /**
  * A simple [Fragment] subclass.
@@ -55,6 +57,11 @@ class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
             Log.d(TAG, "onActivityCreated: $it")
             viewModel.getMovieData(it)
         })
+
+        btn_no_connection_retry.setOnClickListener {
+            layout_no_connection_container.visibility = View.INVISIBLE
+            viewModel.getMovieData(Commons.currentLanguage.value ?: LANGUAGE_CODE_ENGLISH)
+        }
     }
 
     private fun initViewModel() {
@@ -87,5 +94,10 @@ class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
 
     override fun onItemClicked(data: MovieData) {
         startActivity<DetailActivity>(AppConstant.KEY_BUNDLE_HOME_DATA to data)
+    }
+
+    override fun onErrorGetMovieData() {
+        layout_no_connection_container.visibility = View.VISIBLE
+        rv_main.visibility = View.INVISIBLE
     }
 }

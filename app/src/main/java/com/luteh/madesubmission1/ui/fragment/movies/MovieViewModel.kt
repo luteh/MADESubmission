@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.ui.fragment.movies
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.movie.MovieData
@@ -29,7 +30,10 @@ class MovieViewModel(private val myRepository: MyRepository) : BaseViewModel<Mov
                 .subscribe({ response ->
                     movieDatas.value = response.movieData
                 },
-                    { throwable -> Log.e(TAG, "getMovieData: ${throwable.message}") })
+                    { throwable ->
+                        Log.e(TAG, "getMovieData: ${throwable.message}")
+                        mNavigator?.onErrorGetMovieData()
+                    })
         )
     }
 }

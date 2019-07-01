@@ -25,4 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <include
+        layout="@layout/no_connection"
+        android:visibility="invisible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

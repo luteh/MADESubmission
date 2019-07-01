@@ -5,4 +5,5 @@ package com.luteh.madesubmission1.ui.fragment.tvshow
  * Email luthfanmaftuh@gmail.com
  */
 interface TvShowNavigator {
+    fun onErrorGetTvShowData()
 }

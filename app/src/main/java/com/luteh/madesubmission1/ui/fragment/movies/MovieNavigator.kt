@@ -5,4 +5,5 @@ package com.luteh.madesubmission1.ui.fragment.movies
  * Email luthfanmaftuh@gmail.com
  */
 interface MovieNavigator {
+    fun onErrorGetMovieData()
 }

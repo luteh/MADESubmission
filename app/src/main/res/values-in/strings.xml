@@ -10,6 +10,10 @@
     <string name="title_movie">Film</string>
     <string name="title_tv_show">Acara Tv</string>
     <string name="label_message_no_overview">Tidak ada ikhtisar</string>
+    <string name="label_message_error">Terjadi kesalahan, silahkan coba kembali</string>
+    <string name="title_whoops">Whoops!</string>
+    <string name="label_message_no_connection">Koneksi internet tidak ditemukan. Cek koneksi anda atau coba lagi</string>
+    <string name="label_retry">Coba lagi</string>
 
     <string-array name="caption_overview_movies">
         <item>Ketika Avengers dan sekutu mereka terus melindungi dunia dari ancaman yang terlalu besar untuk ditangani oleh satu pahlawan, bahaya baru telah muncul dari bayang-bayang kosmik: Thanos. Seorang lalim penghinaan intergalaksi, tujuannya adalah untuk mengumpulkan semua enam Batu Infinity, artefak kekuatan tak terbayangkan, dan menggunakannya untuk menimbulkan keinginannya yang terpelintir pada semua kenyataan. Segala yang Avengers telah perjuangkan telah mengarah ke saat ini - nasib Bumi dan keberadaannya sendiri tidak pernah lebih pasti.</item>
