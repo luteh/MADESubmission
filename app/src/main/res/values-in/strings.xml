@@ -3,8 +3,8 @@
     <string name="label_title">Judul</string>
     <string name="label_release_date">Tanggal Rilis</string>
     <string name="label_original_language">Bahasa</string>
-    <string name="label_runtime">Durasi</string>
-    <string name="label_genres">Genre</string>
+    <string name="label_popularity">Kepopuleran</string>
+    <string name="label_user_score">Skor Pengguna</string>
     <string name="label_overview">Ikhtisar</string>
     <string name="label_setting">Pengaturan</string>
     <string name="title_movie">Film</string>

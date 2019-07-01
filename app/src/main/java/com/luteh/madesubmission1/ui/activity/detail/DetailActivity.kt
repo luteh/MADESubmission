@@ -3,9 +3,11 @@ package com.luteh.madesubmission1.ui.activity.detail
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.data.model.movie.MovieData
+import com.luteh.madesubmission1.data.model.tvshow.TvShowData
 import kotlinx.android.synthetic.main.detail_activity.*
 
 class DetailActivity : AppCompatActivity() {
@@ -17,20 +19,53 @@ class DetailActivity : AppCompatActivity() {
         title = "Detail"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val homeData: HomeData = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
+        val bundleData: Any = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
 
-        setupView(homeData)
+        if (bundleData is MovieData) {
+            setupView(bundleData)
+        } else {
+            setupView(bundleData as TvShowData)
+        }
     }
 
-    private fun setupView(homeData: HomeData) {
+    private fun setupView(homeData: MovieData) {
         homeData.let {
-            iv_detail.setImageResource(it.imageResId)
             tv_detail_title.text = it.title
-            tv_detail_overview.text = it.overview
             tv_detail_release_date.text = it.releaseDate
-            tv_detail_language.text = it.language
-            tv_detail_runtime.text = it.runtime
-            tv_detail_genres.text = it.genres
+            tv_detail_language.text = it.originalLanguage
+            tv_detail_popularity.text = it.popularity.toString()
+            tv_detail_user_score.text = it.voteAverage.toString()
+
+            tv_detail_overview.text = if (!it.overview.isNullOrEmpty())
+                it.overview
+            else
+                resources.getString(R.string.label_message_no_overview)
+
+
+            Glide.with(this)
+                .load(AppConstant.BASE_URL_IMAGE + it.posterPath)
+                .dontAnimate()
+                .into(iv_detail)
+        }
+    }
+
+    private fun setupView(homeData: TvShowData) {
+        homeData.let {
+            tv_detail_title.text = it.name
+            tv_detail_release_date.text = it.firstAirDate
+            tv_detail_language.text = it.originalLanguage
+            tv_detail_popularity.text = it.popularity.toString()
+            tv_detail_user_score.text = it.voteAverage.toString()
+
+            tv_detail_overview.text = if (!it.overview.isNullOrEmpty())
+                it.overview
+            else
+                resources.getString(R.string.label_message_no_overview)
+
+            Glide.with(this)
+                .load(AppConstant.BASE_URL_IMAGE + it.posterPath)
+                .dontAnimate()
+                .into(iv_detail)
         }
     }
 

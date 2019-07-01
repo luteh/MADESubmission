@@ -6,8 +6,8 @@
     <string name="label_title">Title</string>
     <string name="label_release_date">Release Date</string>
     <string name="label_original_language">Original Language</string>
-    <string name="label_runtime">Runtime</string>
-    <string name="label_genres">Genres</string>
+    <string name="label_popularity">Popularity</string>
+    <string name="label_user_score">User Score</string>
     <string name="label_overview">Overview</string>
     <string name="label_setting">Setting</string>
     <string name="title_movie">Movies</string>
