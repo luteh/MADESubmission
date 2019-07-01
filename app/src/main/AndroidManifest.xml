@@ -14,12 +14,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.luteh.madesubmission1.ui.activity.detail.DetailActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:launchMode="singleTask" />
         <activity
             android:name="com.luteh.madesubmission1.ui.activity.home.HomeActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
