@@ -10,17 +10,14 @@ import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.HomeData
 import com.luteh.madesubmission1.data.model.tvshow.TvShowData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
-import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener
 import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.OnTvShowItemClickListener
 import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.TvShowAdapter
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.no_connection.*
 import org.jetbrains.anko.support.v4.startActivity
-import java.util.*
 
 /**
  * Created by Luthfan Maftuh on 6/25/2019.
