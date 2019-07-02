@@ -1,6 +1,5 @@
 package com.luteh.madesubmission1.data.remote
 
-import android.content.Context
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.tvshow.TvShowResponse

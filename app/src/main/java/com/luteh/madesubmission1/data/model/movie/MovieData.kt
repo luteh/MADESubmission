@@ -50,8 +50,7 @@ data class MovieData(
         parcel.readByte() != 0.toByte(),
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(voteCount)
@@ -72,6 +71,51 @@ data class MovieData(
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as MovieData
+
+        if (voteCount != other.voteCount) return false
+        if (id != other.id) return false
+        if (video != other.video) return false
+        if (voteAverage != other.voteAverage) return false
+        if (title != other.title) return false
+        if (popularity != other.popularity) return false
+        if (posterPath != other.posterPath) return false
+        if (originalLanguage != other.originalLanguage) return false
+        if (originalTitle != other.originalTitle) return false
+        if (genreIds != null) {
+            if (other.genreIds == null) return false
+            if (!genreIds.contentEquals(other.genreIds)) return false
+        } else if (other.genreIds != null) return false
+        if (backdropPath != other.backdropPath) return false
+        if (adult != other.adult) return false
+        if (overview != other.overview) return false
+        if (releaseDate != other.releaseDate) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = voteCount
+        result = 31 * result + id
+        result = 31 * result + video.hashCode()
+        result = 31 * result + voteAverage.hashCode()
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + popularity.hashCode()
+        result = 31 * result + (posterPath?.hashCode() ?: 0)
+        result = 31 * result + (originalLanguage?.hashCode() ?: 0)
+        result = 31 * result + (originalTitle?.hashCode() ?: 0)
+        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
+        result = 31 * result + (backdropPath?.hashCode() ?: 0)
+        result = 31 * result + adult.hashCode()
+        result = 31 * result + (overview?.hashCode() ?: 0)
+        result = 31 * result + (releaseDate?.hashCode() ?: 0)
+        return result
     }
 
     companion object CREATOR : Parcelable.Creator<MovieData> {

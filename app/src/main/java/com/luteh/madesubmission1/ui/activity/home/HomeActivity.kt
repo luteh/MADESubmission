@@ -21,9 +21,6 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
-    private val TAG = "HomeActivity"
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)

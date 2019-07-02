@@ -48,8 +48,7 @@ data class TvShowData(
         parcel.readDouble(),
         parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(originalName)
@@ -69,6 +68,49 @@ data class TvShowData(
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as TvShowData
+
+        if (originalName != other.originalName) return false
+        if (genreIds != null) {
+            if (other.genreIds == null) return false
+            if (!genreIds.contentEquals(other.genreIds)) return false
+        } else if (other.genreIds != null) return false
+        if (name != other.name) return false
+        if (popularity != other.popularity) return false
+        if (originCountry != other.originCountry) return false
+        if (voteCount != other.voteCount) return false
+        if (firstAirDate != other.firstAirDate) return false
+        if (backdropPath != other.backdropPath) return false
+        if (originalLanguage != other.originalLanguage) return false
+        if (id != other.id) return false
+        if (voteAverage != other.voteAverage) return false
+        if (overview != other.overview) return false
+        if (posterPath != other.posterPath) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = originalName?.hashCode() ?: 0
+        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
+        result = 31 * result + (name?.hashCode() ?: 0)
+        result = 31 * result + popularity.hashCode()
+        result = 31 * result + (originCountry?.hashCode() ?: 0)
+        result = 31 * result + voteCount
+        result = 31 * result + (firstAirDate?.hashCode() ?: 0)
+        result = 31 * result + (backdropPath?.hashCode() ?: 0)
+        result = 31 * result + (originalLanguage?.hashCode() ?: 0)
+        result = 31 * result + id
+        result = 31 * result + voteAverage.hashCode()
+        result = 31 * result + (overview?.hashCode() ?: 0)
+        result = 31 * result + (posterPath?.hashCode() ?: 0)
+        return result
     }
 
     companion object CREATOR : Parcelable.Creator<TvShowData> {
