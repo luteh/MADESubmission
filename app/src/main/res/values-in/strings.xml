@@ -13,5 +13,7 @@
     <string name="title_whoops">Whoops!</string>
     <string name="label_message_no_connection">Koneksi internet tidak ditemukan. Cek koneksi anda atau coba lagi</string>
     <string name="label_retry">Coba lagi</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_favorite">Favorite</string>
 
 </resources>
