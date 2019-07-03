@@ -2,7 +2,6 @@ package com.luteh.madesubmission1.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.ui.fragment.movies.MovieViewModel
 import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowViewModel
