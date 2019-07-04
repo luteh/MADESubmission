@@ -11,8 +11,11 @@ import org.kodein.di.generic.instance
  * Created by Luthfan Maftuh on 6/29/2019.
  * Email luthfanmaftuh@gmail.com
  */
-abstract class BaseFragment: Fragment(), KodeinAware {
+abstract class BaseFragment : Fragment(), KodeinAware {
 
     override val kodein: Kodein by closestKodein()
     val viewModelFactory: MyViewModelFactory by instance()
+
+    val baseActivity: BaseActivity
+        get() = activity as BaseActivity
 }
