@@ -1,11 +1,12 @@
 package com.luteh.madesubmission1.ui.activity.detail
 
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.movie.MovieData
 import com.luteh.madesubmission1.data.model.tvshow.TvShowData
 import kotlinx.android.synthetic.main.detail_activity.*
@@ -71,6 +72,20 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_like -> {
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
         return true
     }
 }
