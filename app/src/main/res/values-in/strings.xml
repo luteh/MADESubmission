@@ -15,5 +15,6 @@
     <string name="label_retry">Coba lagi</string>
     <string name="title_discover">Discover</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_like">Like</string>
 
 </resources>
