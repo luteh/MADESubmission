@@ -3,6 +3,7 @@ package com.luteh.madesubmission1
 import android.app.Application
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.MyRepositoryImpl
+import com.luteh.madesubmission1.data.local.MyDatabase
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
 import com.luteh.madesubmission1.ui.MyViewModelFactory
 import org.kodein.di.Kodein
@@ -24,6 +25,8 @@ class MyApp : Application(), KodeinAware {
 
         // Provide instance
         bind() from singleton { ApiServiceInterface() }
+        bind() from singleton { MyDatabase(instance()) }
+
         bind<MyRepository>() with singleton { MyRepositoryImpl(instance()) }
 
         // Inject View Model Factory
