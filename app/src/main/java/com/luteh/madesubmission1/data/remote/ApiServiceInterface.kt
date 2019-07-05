@@ -1,8 +1,8 @@
 package com.luteh.madesubmission1.data.remote
 
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.movie.MovieResponse
-import com.luteh.madesubmission1.data.model.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

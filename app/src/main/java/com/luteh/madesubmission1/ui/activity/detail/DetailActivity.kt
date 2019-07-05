@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.movie.MovieData
-import com.luteh.madesubmission1.data.model.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.api.movie.MovieData
+import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
 import kotlinx.android.synthetic.main.detail_activity.*
 
 class DetailActivity : AppCompatActivity() {

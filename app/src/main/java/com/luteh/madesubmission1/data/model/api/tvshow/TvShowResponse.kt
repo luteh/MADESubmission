@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.model.tvshow
+package com.luteh.madesubmission1.data.model.api.tvshow
 
 
 import com.google.gson.annotations.SerializedName

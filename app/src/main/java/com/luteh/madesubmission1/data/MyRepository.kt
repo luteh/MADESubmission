@@ -1,7 +1,7 @@
 package com.luteh.madesubmission1.data
 
-import com.luteh.madesubmission1.data.model.movie.MovieResponse
-import com.luteh.madesubmission1.data.model.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import io.reactivex.Single
 
 /**

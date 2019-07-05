@@ -1,6 +1,6 @@
 package com.luteh.madesubmission1.ui.fragment.tvshow.adapter
 
-import com.luteh.madesubmission1.data.model.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
 
 /**
  * Created by Luthfan Maftuh on 6/24/2019.

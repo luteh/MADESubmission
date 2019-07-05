@@ -14,16 +14,14 @@ import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
-import com.luteh.madesubmission1.data.model.movie.MovieData
+import com.luteh.madesubmission1.data.model.api.movie.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.fragment.movies.adapter.MovieAdapter
 import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.no_connection.*
-import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.yesButton
 
 /**
  * A simple [Fragment] subclass.
