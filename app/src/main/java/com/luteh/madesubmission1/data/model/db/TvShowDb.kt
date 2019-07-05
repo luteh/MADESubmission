@@ -3,12 +3,13 @@ package com.luteh.madesubmission1.data.model.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.luteh.madesubmission1.common.constant.AppConstant.DATABASE_TABLE_TV_SHOW
 
 /**
  * Created by Luthfan Maftuh on 7/4/2019.
  * Email luthfanmaftuh@gmail.com
  */
-@Entity(tableName = "tv_show_db")
+@Entity(tableName = DATABASE_TABLE_TV_SHOW)
 data class TvShowDb(
     val name: String?, // Supernatural
     val popularity: Double, // 110.063

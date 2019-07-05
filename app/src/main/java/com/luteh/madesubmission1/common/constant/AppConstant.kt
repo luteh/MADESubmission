@@ -14,4 +14,8 @@ object AppConstant {
 
     const val LANGUAGE_CODE_ENGLISH = "en-US"
     const val LANGUAGE_CODE_INDONESIAN = "id-ID"
+
+    const val DATABASE_NAME = "mydatabase.db"
+    const val DATABASE_TABLE_MOVIE = "movie_db"
+    const val DATABASE_TABLE_TV_SHOW = "tv_show_db"
 }
