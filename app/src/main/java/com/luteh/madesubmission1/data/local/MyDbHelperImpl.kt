@@ -4,8 +4,16 @@ import com.luteh.madesubmission1.data.model.db.MovieDb
 import com.luteh.madesubmission1.data.model.db.TvShowDb
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Maybe
+import io.reactivex.Single
 
 class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
+    override fun getMovieById(movieId: Int): Single<MovieDb> =
+        myDatabase.movieDao().getMovieById(movieId)
+
+    override fun getTvShowById(tvShowId: Int): Single<TvShowDb> =
+        myDatabase.tvShowDao().getTvShowById(tvShowId)
+
     override fun saveMovie(movieDb: MovieDb): Completable =
         myDatabase.movieDao().insertMovie(movieDb)
 

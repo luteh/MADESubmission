@@ -1,6 +1,7 @@
 package com.luteh.madesubmission1.ui.activity.detail
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.api.movie.MovieData
@@ -17,6 +18,8 @@ import io.reactivex.schedulers.Schedulers
 class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<DetailNavigator>() {
 
     private val TAG = "DetailViewModel"
+
+    val isDataNotNull: MutableLiveData<Boolean> = MutableLiveData()
 
     fun saveDetailData(data: Any) {
         if (data is MovieData)
@@ -76,6 +79,46 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
                     mNavigator?.onErrorSaveDetailData()
                 })
 
+        )
+    }
+
+    fun getDetailData(data: Any) {
+        if (data is MovieData)
+            getMovieById(data.id)
+        else if (data is TvShowData)
+            getTvShowById(data.id)
+    }
+
+    private fun getMovieById(id: Int) {
+        compositeDisposable.add(
+            myRepository.getMovieById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate { mIsLoading.value = true }
+                .doOnSubscribe { mIsLoading.value = false }
+                .subscribe({
+                    Log.d(TAG, "getMovieById: $it")
+                    isDataNotNull.value = true
+                }, {
+                    isDataNotNull.value = false
+                    Log.e(TAG, "getMovieById: ${it.message}")
+                })
+        )
+    }
+
+    private fun getTvShowById(id: Int) {
+        compositeDisposable.add(
+            myRepository.getTvShowById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnTerminate { mIsLoading.value = true }
+                .doOnSubscribe { mIsLoading.value = false }
+                .subscribe({
+                    isDataNotNull.value = true
+                }, {
+                    isDataNotNull.value = false
+                    Log.e(TAG, "getTvShowById: ${it.message}")
+                })
         )
     }
 }

@@ -8,12 +8,16 @@ import com.luteh.madesubmission1.data.model.db.TvShowDb
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 class MyRepositoryImpl(
     private val apiServiceInterface: ApiServiceInterface,
     private val myDbHelper: MyDbHelper
 ) : MyRepository {
+    override fun getMovieById(movieId: Int): Single<MovieDb> = myDbHelper.getMovieById(movieId)
+
+    override fun getTvShowById(tvShowId: Int): Single<TvShowDb> = myDbHelper.getTvShowById(tvShowId)
 
     override fun getMovieData(language: String): Single<MovieResponse> =
         apiServiceInterface.getMovieData(language)

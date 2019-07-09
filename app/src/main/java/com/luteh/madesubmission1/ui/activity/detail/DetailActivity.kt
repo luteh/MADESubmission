@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
@@ -39,15 +40,17 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     }
 
     private fun onInit() {
-        initViewModel()
-
         bundleData = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
+
+        initViewModel()
 
         if (bundleData is MovieData) {
             setupView(bundleData as MovieData)
         } else {
             setupView(bundleData as TvShowData)
         }
+
+        viewModel.getDetailData(bundleData)
     }
 
     private fun initViewModel() {
@@ -114,6 +117,14 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.detail_menu, menu)
         menu_like = menu.findItem(R.id.menu_like)
+
+        viewModel.isDataNotNull.observe(this, Observer {
+            if (it)
+                menu_like.setIcon(R.drawable.ic_favorite_red_24dp)
+            else
+                menu_like.setIcon(R.drawable.ic_favorite_border_24dp)
+        })
+
         return super.onCreateOptionsMenu(menu)
     }
 
