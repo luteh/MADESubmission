@@ -15,6 +15,9 @@ class MyRepositoryImpl(
     private val myDbHelper: MyDbHelper
 ) : MyRepository {
 
+    override fun getMovieData(language: String): Single<MovieResponse> =
+        apiServiceInterface.getMovieData(language)
+
     override fun saveMovie(movieDb: MovieDb): Completable =
         myDbHelper.saveMovie(movieDb)
 
@@ -32,9 +35,6 @@ class MyRepositoryImpl(
 
     override fun deleteTvShowById(tvShowId: String) =
         myDbHelper.deleteTvShowById(tvShowId)
-
-    override fun getMovieData(language: String): Single<MovieResponse> =
-        apiServiceInterface.getMovieData(language)
 
     override fun getTvShowData(language: String): Single<TvShowResponse> =
         apiServiceInterface.getTvShowData(language)
