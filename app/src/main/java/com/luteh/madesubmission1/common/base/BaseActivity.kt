@@ -39,13 +39,10 @@ abstract class BaseActivity : AppCompatActivity(){
 
         fragmentTemp.arguments = bundle
 
-        /*fragmentTransaction.apply {
+        fragmentTransaction.apply {
             setPrimaryNavigationFragment(fragmentTemp)
             setReorderingAllowed(true)
             commitNowAllowingStateLoss()
-        }*/
-        fragmentTransaction.setPrimaryNavigationFragment(fragmentTemp)
-        fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.commitNowAllowingStateLoss()
+        }
     }
 }

@@ -16,5 +16,7 @@
     <string name="title_discover">Discover</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_like">Like</string>
+    <string name="label_message_save_detail_success">Saved to your favorite lists</string>
+    <string name="label_message_save_detail_error">Terjadi kesalahan, silahkan coba lagi</string>
 
 </resources>

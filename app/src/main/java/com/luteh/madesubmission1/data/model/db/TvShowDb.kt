@@ -25,7 +25,5 @@ data class TvShowDb(
     val voteAverage: Double, // 7.3
     val overview: String?, // When they were boys, Sam and Dean Winchester lost their mother to a mysterious and demonic supernatural force. Subsequently, their father raised them to be soldiers. He taught them about the paranormal evil that lives in the dark corners and on the back roads of America ... and he taught them how to kill it. Now, the Winchester brothers crisscross the country in their '67 Chevy Impala, battling every kind of supernatural threat they encounter along the way.
     @ColumnInfo(name = "poster_path")
-    val posterPath: String?, // /3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg
-    @ColumnInfo(name = "is_liked")
-    val isLiked: Boolean
+    val posterPath: String? // /3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg
 )

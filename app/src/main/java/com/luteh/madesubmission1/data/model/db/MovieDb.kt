@@ -25,7 +25,5 @@ data class MovieDb(
     val backdropPath: String?, // /8sNz2DxYiYqGkxk66U8BqvuZZjE.jpg
     val overview: String?, // Subaru and friends finally get a moment of peace, and Subaru goes on a certain secret mission that he must not let anyone find out about! However, even though Subaru is wearing a disguise, Petra and other children of the village immediately figure out who he is. Now that his mission was exposed within five seconds of it starting, what will happen with Subaru's "date course" with Emilia?
     @ColumnInfo(name = "release_date")
-    val releaseDate: String?, // 2018-10-06
-    @ColumnInfo(name = "is_liked")
-    val isLiked: Boolean
+    val releaseDate: String? // 2018-10-06
 )
