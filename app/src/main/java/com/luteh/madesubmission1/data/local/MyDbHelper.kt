@@ -4,7 +4,6 @@ import com.luteh.madesubmission1.data.model.db.MovieDb
 import com.luteh.madesubmission1.data.model.db.TvShowDb
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 /**
@@ -16,10 +15,10 @@ interface MyDbHelper {
     fun saveMovie(movieDb: MovieDb): Completable
     fun getMovieById(movieId: Int): Single<MovieDb>
     fun loadAllMovies(): Flowable<List<MovieDb>>
-    fun deleteMovieById(movieId: String)
+    fun deleteMovieById(movieId: Int): Completable
 
     fun saveTvShow(tvShowDb: TvShowDb): Completable
     fun getTvShowById(tvShowId: Int): Single<TvShowDb>
     fun loadAllTvShows(): Flowable<List<TvShowDb>>
-    fun deleteTvShowById(tvShowId: String)
+    fun deleteTvShowById(tvShowId: Int): Completable
 }

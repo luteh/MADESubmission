@@ -8,6 +8,7 @@ import com.luteh.madesubmission1.data.model.api.movie.MovieData
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
 import com.luteh.madesubmission1.data.model.db.MovieDb
 import com.luteh.madesubmission1.data.model.db.TvShowDb
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -19,7 +20,7 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
 
     private val TAG = "DetailViewModel"
 
-    val isDataNotNull: MutableLiveData<Boolean> = MutableLiveData()
+    val isDataSaved: MutableLiveData<Boolean> = MutableLiveData()
 
     fun saveDetailData(data: Any) {
         if (data is MovieData)
@@ -42,10 +43,9 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
             myRepository.saveMovie(movieDb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { mIsLoading.value = true }
-                .doOnSubscribe { mIsLoading.value = false }
                 .subscribe({
                     Log.d(TAG, "saveMovie: Success")
+                    isDataSaved.value = true
                     mNavigator?.onSuccessSaveDetailData()
                 }, {
                     Log.e(TAG, "saveMovie: ${it.message}")
@@ -69,10 +69,9 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
             myRepository.saveTvShow(tvShowDb)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { mIsLoading.value = true }
-                .doOnSubscribe { mIsLoading.value = false }
                 .subscribe({
                     Log.d(TAG, "saveTvShow: Success")
+                    isDataSaved.value = true
                     mNavigator?.onSuccessSaveDetailData()
                 }, {
                     Log.e(TAG, "saveTvShow: ${it.message}")
@@ -94,13 +93,11 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
             myRepository.getMovieById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { mIsLoading.value = true }
-                .doOnSubscribe { mIsLoading.value = false }
                 .subscribe({
                     Log.d(TAG, "getMovieById: $it")
-                    isDataNotNull.value = true
+                    isDataSaved.value = true
                 }, {
-                    isDataNotNull.value = false
+                    isDataSaved.value = false
                     Log.e(TAG, "getMovieById: ${it.message}")
                 })
         )
@@ -111,13 +108,45 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
             myRepository.getTvShowById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnTerminate { mIsLoading.value = true }
-                .doOnSubscribe { mIsLoading.value = false }
                 .subscribe({
-                    isDataNotNull.value = true
+                    isDataSaved.value = true
                 }, {
-                    isDataNotNull.value = false
+                    isDataSaved.value = false
                     Log.e(TAG, "getTvShowById: ${it.message}")
+                })
+        )
+    }
+
+    fun deleteDetailData(data: Any) {
+        if (data is MovieData)
+            deleteMovieById(data.id)
+        else if (data is TvShowData)
+            deleteTvShowById(data.id)
+    }
+
+    private fun deleteMovieById(id: Int) {
+        compositeDisposable.add(
+            myRepository.deleteMovieById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    isDataSaved.value = false
+                }, {
+                    Log.e(TAG, "deleteMovieById: ${it.message}")
+                })
+        )
+    }
+
+    private fun deleteTvShowById(id: Int) {
+
+        compositeDisposable.add(
+            myRepository.deleteTvShowById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    isDataSaved.value = false
+                }, {
+                    Log.e(TAG, "deleteTvShowById: ${it.message}")
                 })
         )
     }

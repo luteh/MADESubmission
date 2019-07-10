@@ -26,6 +26,7 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     private lateinit var viewModel: DetailViewModel
 
     private lateinit var bundleData: Any
+    private var isDataLiked = false
 
     private lateinit var menu_like: MenuItem
 
@@ -100,7 +101,6 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     }
 
     override fun onSuccessSaveDetailData() {
-        menu_like.setIcon(R.drawable.ic_favorite_red_24dp)
         longToast(getString(R.string.label_message_save_detail_success))
 
     }
@@ -118,11 +118,13 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
         menuInflater.inflate(R.menu.detail_menu, menu)
         menu_like = menu.findItem(R.id.menu_like)
 
-        viewModel.isDataNotNull.observe(this, Observer {
+        viewModel.isDataSaved.observe(this, Observer {
             if (it)
                 menu_like.setIcon(R.drawable.ic_favorite_red_24dp)
             else
                 menu_like.setIcon(R.drawable.ic_favorite_border_24dp)
+
+            isDataLiked = it
         })
 
         return super.onCreateOptionsMenu(menu)
@@ -131,7 +133,11 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_like -> {
-                viewModel.saveDetailData(bundleData)
+                if (!isDataLiked) {
+                    viewModel.saveDetailData(bundleData)
+                } else {
+                    viewModel.deleteDetailData(bundleData)
+                }
             }
             else -> return super.onOptionsItemSelected(item)
         }

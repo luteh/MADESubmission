@@ -8,7 +8,6 @@ import com.luteh.madesubmission1.data.model.db.TvShowDb
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 class MyRepositoryImpl(
@@ -28,7 +27,7 @@ class MyRepositoryImpl(
     override fun loadAllMovies(): Flowable<List<MovieDb>> =
         myDbHelper.loadAllMovies()
 
-    override fun deleteMovieById(movieId: String) =
+    override fun deleteMovieById(movieId: Int) =
         myDbHelper.deleteMovieById(movieId)
 
     override fun saveTvShow(tvShowDb: TvShowDb): Completable =
@@ -37,7 +36,7 @@ class MyRepositoryImpl(
     override fun loadAllTvShows(): Flowable<List<TvShowDb>> =
         myDbHelper.loadAllTvShows()
 
-    override fun deleteTvShowById(tvShowId: String) =
+    override fun deleteTvShowById(tvShowId: Int) =
         myDbHelper.deleteTvShowById(tvShowId)
 
     override fun getTvShowData(language: String): Single<TvShowResponse> =

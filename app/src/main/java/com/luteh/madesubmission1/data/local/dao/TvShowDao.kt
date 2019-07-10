@@ -26,5 +26,5 @@ interface TvShowDao {
     fun loadAllTvShows(): Flowable<List<TvShowDb>>
 
     @Query("DELETE FROM tv_show_db WHERE id = :tvShowId")
-    fun deleteTvShowById(tvShowId: String)
+    fun deleteTvShowById(tvShowId: Int): Completable
 }

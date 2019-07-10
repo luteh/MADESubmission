@@ -4,7 +4,6 @@ import com.luteh.madesubmission1.data.model.db.MovieDb
 import com.luteh.madesubmission1.data.model.db.TvShowDb
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
@@ -20,7 +19,7 @@ class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
     override fun loadAllMovies(): Flowable<List<MovieDb>> =
         myDatabase.movieDao().loadAllMovies()
 
-    override fun deleteMovieById(movieId: String) =
+    override fun deleteMovieById(movieId: Int) =
         myDatabase.movieDao().deleteMovieById(movieId)
 
     override fun saveTvShow(tvShowDb: TvShowDb): Completable =
@@ -29,6 +28,6 @@ class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
     override fun loadAllTvShows(): Flowable<List<TvShowDb>> =
         myDatabase.tvShowDao().loadAllTvShows()
 
-    override fun deleteTvShowById(tvShowId: String) =
+    override fun deleteTvShowById(tvShowId: Int) =
         myDatabase.tvShowDao().deleteTvShowById(tvShowId)
 }

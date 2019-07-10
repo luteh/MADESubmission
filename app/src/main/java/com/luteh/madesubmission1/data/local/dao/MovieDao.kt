@@ -7,7 +7,6 @@ import androidx.room.Query
 import com.luteh.madesubmission1.data.model.db.MovieDb
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 /**
@@ -27,5 +26,5 @@ interface MovieDao {
     fun loadAllMovies(): Flowable<List<MovieDb>>
 
     @Query("DELETE FROM movie_db WHERE id = :movieId")
-    fun deleteMovieById(movieId: String)
+    fun deleteMovieById(movieId: Int): Completable
 }
