@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.movies.adapter
+package com.luteh.madesubmission1.ui.fragment.discover.tvshow.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import kotlinx.android.synthetic.main.home_item.view.*
 
 /**
@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.home_item.view.*
  * Email luthfanmaftuh@gmail.com
  */
 
-private lateinit var onMovieItemClickListener: OnMovieItemClickListener
+private lateinit var onTvShowItemClickListener: OnTvShowItemClickListener
 
-class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
+class TvShowAdapter : RecyclerView.Adapter<TvShowViewHolder>() {
 
-    private var dataSources: List<MovieData> = emptyList()
+    private var dataSources: List<TvShowData> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
-        MovieViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder =
+        TvShowViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.home_item,
                 parent,
@@ -32,29 +32,29 @@ class MovieAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun getItemCount(): Int = dataSources.size
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         val data = dataSources[position]
         holder.bindTo(data)
     }
 
-    fun setDataSource(data: List<MovieData>) {
+    fun setDataSource(data: List<TvShowData>) {
         dataSources = data
         notifyDataSetChanged()
     }
 
-    fun setItemClickListener(listener: OnMovieItemClickListener) {
-        onMovieItemClickListener = listener
+    fun setItemClickListener(listener: OnTvShowItemClickListener) {
+        onTvShowItemClickListener = listener
     }
 }
 
-class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class TvShowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindTo(data: MovieData) {
+    fun bindTo(data: TvShowData) {
 
         data.let {
             with(itemView) {
-                tv_main_title_item.text = it.title
-                tv_main_release_date_item.text = it.releaseDate
+                tv_main_title_item.text = it.originalName
+                tv_main_release_date_item.text = it.firstAirDate
 
                 tv_main_overview_item.text = if (!it.overview.isNullOrEmpty()) {
                     it.overview
@@ -68,7 +68,7 @@ class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                     .into(iv_main_item)
 
                 setOnClickListener {
-                    onMovieItemClickListener.onItemClicked(data)
+                    onTvShowItemClickListener.onItemClicked(data)
                 }
             }
         }

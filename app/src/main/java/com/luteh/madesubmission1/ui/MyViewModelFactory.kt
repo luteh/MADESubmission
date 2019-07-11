@@ -6,8 +6,8 @@ import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.ui.activity.detail.DetailViewModel
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieViewModel
 import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowViewModel
-import com.luteh.madesubmission1.ui.fragment.movies.MovieViewModel
-import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowViewModel
+import com.luteh.madesubmission1.ui.fragment.discover.movies.MovieViewModel
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.TvShowViewModel
 
 /**
  * Created by Luthfan Maftuh on 6/29/2019.

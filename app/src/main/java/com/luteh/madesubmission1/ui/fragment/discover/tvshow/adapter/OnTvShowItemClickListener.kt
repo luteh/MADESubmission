@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.tvshow.adapter
+package com.luteh.madesubmission1.ui.fragment.discover.tvshow.adapter
 
 import com.luteh.madesubmission1.data.model.db.TvShowData
 

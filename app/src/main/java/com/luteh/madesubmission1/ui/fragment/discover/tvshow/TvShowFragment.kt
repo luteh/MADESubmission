@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.tvshow
+package com.luteh.madesubmission1.ui.fragment.discover.tvshow
 
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +12,8 @@ import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
-import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.OnTvShowItemClickListener
-import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.TvShowAdapter
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.adapter.OnTvShowItemClickListener
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.adapter.TvShowAdapter
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.no_connection.*

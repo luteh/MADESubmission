@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.ui.activity.home.HomePagerAdapter
-import com.luteh.madesubmission1.ui.fragment.favorite.FavoriteFragment
-import com.luteh.madesubmission1.ui.fragment.movies.MovieFragment
-import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
+import com.luteh.madesubmission1.ui.fragment.discover.movies.MovieFragment
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_content.*
 
 /**

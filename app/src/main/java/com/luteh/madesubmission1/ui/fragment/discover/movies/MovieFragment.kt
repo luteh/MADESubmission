@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.movies
+package com.luteh.madesubmission1.ui.fragment.discover.movies
 
 
 import android.os.Bundle
@@ -16,8 +16,8 @@ import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
-import com.luteh.madesubmission1.ui.fragment.movies.adapter.MovieAdapter
-import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener
+import com.luteh.madesubmission1.ui.fragment.discover.movies.adapter.MovieAdapter
+import com.luteh.madesubmission1.ui.fragment.discover.movies.adapter.OnMovieItemClickListener
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.no_connection.*

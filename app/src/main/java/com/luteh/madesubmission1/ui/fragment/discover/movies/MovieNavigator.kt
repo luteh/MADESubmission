@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.movies
+package com.luteh.madesubmission1.ui.fragment.discover.movies
 
 /**
  * Created by Luthfan Maftuh on 6/29/2019.

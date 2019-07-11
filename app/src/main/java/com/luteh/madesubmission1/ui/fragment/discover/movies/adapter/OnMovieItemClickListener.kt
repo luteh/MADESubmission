@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.fragment.movies.adapter
+package com.luteh.madesubmission1.ui.fragment.discover.movies.adapter
 
 import com.luteh.madesubmission1.data.model.db.MovieData
 

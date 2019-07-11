@@ -1,10 +1,10 @@
-package com.luteh.madesubmission1.ui.fragment.movies
+package com.luteh.madesubmission1.ui.fragment.discover.tvshow
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -13,26 +13,24 @@ import io.reactivex.schedulers.Schedulers
  * Email luthfanmaftuh@gmail.com
  */
 @Suppress("UnstableApiUsage")
-class MovieViewModel(private val myRepository: MyRepository) : BaseViewModel<MovieNavigator>() {
+class TvShowViewModel(private val myRepository: MyRepository) : BaseViewModel<TvShowNavigator>() {
 
-    private val TAG = "MovieViewModel"
+    private val TAG = "TvShowViewModel"
 
-    val movieDatas: MutableLiveData<List<MovieData>> = MutableLiveData()
+    val tvShowDatas: MutableLiveData<List<TvShowData>> = MutableLiveData()
 
-    fun getMovieData(language: String) {
+    fun getTvShowData(language: String) {
         compositeDisposable.add(
-            myRepository.getMovieData(language)
+            myRepository.getTvShowData(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mIsLoading.value = true }
                 .doOnTerminate { mIsLoading.value = false }
                 .subscribe({ response ->
-                    movieDatas.value = response.movieData
+                    tvShowDatas.value = response.tvShowData
                 },
-                    { throwable ->
-                        Log.e(TAG, "getMovieData: ${throwable.message}")
-                        mNavigator?.onErrorGetMovieData()
-                    })
+                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}")
+                    mNavigator?.onErrorGetTvShowData()})
         )
     }
 }

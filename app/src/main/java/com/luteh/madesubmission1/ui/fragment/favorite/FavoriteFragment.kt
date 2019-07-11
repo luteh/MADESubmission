@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.ui.activity.home.HomePagerAdapter
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieFragment
 import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowFragment
-import com.luteh.madesubmission1.ui.fragment.movies.MovieFragment
-import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_content.*
 
 /**
