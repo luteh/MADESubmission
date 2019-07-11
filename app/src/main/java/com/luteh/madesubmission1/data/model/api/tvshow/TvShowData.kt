@@ -3,40 +3,55 @@ package com.luteh.madesubmission1.data.model.api.tvshow
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.luteh.madesubmission1.common.constant.AppConstant
 import java.util.ArrayList
 
+@Entity(tableName = AppConstant.DATABASE_TABLE_TV_SHOW)
 data class TvShowData(
     @SerializedName("original_name")
+    @ColumnInfo(name = "original_name")
     val originalName: String?, // Supernatural
-    @SerializedName("genre_ids")
-    val genreIds: IntArray?,
+    /*@SerializedName("genre_ids")
+    @ColumnInfo(name = "genre_ids")
+    val genreIds: IntArray?,*/
     @SerializedName("name")
     val name: String?, // Supernatural
     @SerializedName("popularity")
     val popularity: Double, // 110.063
     @SerializedName("origin_country")
-    val originCountry: ArrayList<String>?,
+    @ColumnInfo(name = "origin_country")
+    val originCountry: List<String>?,
     @SerializedName("vote_count")
+    @ColumnInfo(name = "vote_count")
     val voteCount: Int, // 1812
     @SerializedName("first_air_date")
+    @ColumnInfo(name = "first_air_date")
     val firstAirDate: String?, // 2005-09-13
     @SerializedName("backdrop_path")
+    @ColumnInfo(name = "backdrop_path")
     val backdropPath: String?, // /o9OKe3M06QMLOzTl3l6GStYtnE9.jpg
     @SerializedName("original_language")
+    @ColumnInfo(name = "original_language")
     val originalLanguage: String?, // en
     @SerializedName("id")
+    @PrimaryKey
     val id: Int, // 1622
     @SerializedName("vote_average")
+    @ColumnInfo(name = "vote_average")
     val voteAverage: Double, // 7.3
     @SerializedName("overview")
     val overview: String?, // When they were boys, Sam and Dean Winchester lost their mother to a mysterious and demonic supernatural force. Subsequently, their father raised them to be soldiers. He taught them about the paranormal evil that lives in the dark corners and on the back roads of America ... and he taught them how to kill it. Now, the Winchester brothers crisscross the country in their '67 Chevy Impala, battling every kind of supernatural threat they encounter along the way.
     @SerializedName("poster_path")
+    @ColumnInfo(name = "poster_path")
     val posterPath: String? // /3iFm6Kz7iYoFaEcj4fLyZHAmTQA.jpg
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.createIntArray(),
+//        parcel.createIntArray(),
         parcel.readString(),
         parcel.readDouble(),
         parcel.createStringArrayList(),
@@ -52,7 +67,7 @@ data class TvShowData(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(originalName)
-        parcel.writeIntArray(genreIds)
+//        parcel.writeIntArray(genreIds)
         parcel.writeString(name)
         parcel.writeDouble(popularity)
         parcel.writeStringList(originCountry)
@@ -77,10 +92,10 @@ data class TvShowData(
         other as TvShowData
 
         if (originalName != other.originalName) return false
-        if (genreIds != null) {
+        /*if (genreIds != null) {
             if (other.genreIds == null) return false
             if (!genreIds.contentEquals(other.genreIds)) return false
-        } else if (other.genreIds != null) return false
+        } else if (other.genreIds != null) return false*/
         if (name != other.name) return false
         if (popularity != other.popularity) return false
         if (originCountry != other.originCountry) return false
@@ -98,7 +113,7 @@ data class TvShowData(
 
     override fun hashCode(): Int {
         var result = originalName?.hashCode() ?: 0
-        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
+//        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
         result = 31 * result + (name?.hashCode() ?: 0)
         result = 31 * result + popularity.hashCode()
         result = 31 * result + (originCountry?.hashCode() ?: 0)

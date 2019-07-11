@@ -56,17 +56,8 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
     }
 
     private fun saveTvShow(data: TvShowData) {
-        val tvShowDb = TvShowDb(
-            data.name,
-            data.popularity,
-            data.firstAirDate,
-            data.backdropPath,
-            data.originalLanguage,
-            data.id,
-            data.voteAverage, data.overview, data.posterPath
-        )
         compositeDisposable.add(
-            myRepository.saveTvShow(tvShowDb)
+            myRepository.saveTvShow(data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
