@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.data.model.api.tvshow
 
 
 import com.google.gson.annotations.SerializedName
+import com.luteh.madesubmission1.data.model.db.TvShowData
 
 data class TvShowResponse(
     @SerializedName("page")

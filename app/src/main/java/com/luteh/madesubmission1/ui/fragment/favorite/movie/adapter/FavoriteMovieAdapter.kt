@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.luteh.madesubmission1.R
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 
 /**
  * Created by Luthfan Maftuh on 7/10/2019.
@@ -14,7 +14,7 @@ class FavoriteMovieAdapter(
     private val favoriteMovieItemListener: FavoriteMovieItemListener
 ) : RecyclerView.Adapter<FavoriteMovieViewHolder>() {
 
-    private var dataSources: List<MovieDb> = emptyList()
+    private var dataSources: List<MovieData> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteMovieViewHolder =
         FavoriteMovieViewHolder(
@@ -33,7 +33,7 @@ class FavoriteMovieAdapter(
         holder.bindTo(data)
     }
 
-    fun setDataSource(data: List<MovieDb>) {
+    fun setDataSource(data: List<MovieData>) {
         dataSources = data
         notifyDataSetChanged()
     }

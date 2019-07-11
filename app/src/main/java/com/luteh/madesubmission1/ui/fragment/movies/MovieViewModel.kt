@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.api.movie.MovieData
+import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -1,6 +1,6 @@
 package com.luteh.madesubmission1.ui.fragment.movies.adapter
 
-import com.luteh.madesubmission1.data.model.api.movie.MovieData
+import com.luteh.madesubmission1.data.model.db.MovieData
 
 /**
  * Created by Luthfan Maftuh on 6/24/2019.

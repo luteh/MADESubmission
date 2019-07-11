@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single

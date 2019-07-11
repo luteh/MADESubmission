@@ -10,7 +10,7 @@ import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.OnTvShowItemClickListener
 import com.luteh.madesubmission1.ui.fragment.tvshow.adapter.TvShowAdapter

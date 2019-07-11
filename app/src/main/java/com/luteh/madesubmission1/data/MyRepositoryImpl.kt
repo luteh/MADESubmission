@@ -2,10 +2,9 @@ package com.luteh.madesubmission1.data
 
 import com.luteh.madesubmission1.data.local.MyDbHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
-import com.luteh.madesubmission1.data.model.db.MovieDb
-import com.luteh.madesubmission1.data.model.db.TvShowDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -15,7 +14,7 @@ class MyRepositoryImpl(
     private val apiServiceInterface: ApiServiceInterface,
     private val myDbHelper: MyDbHelper
 ) : MyRepository {
-    override fun getMovieById(movieId: Int): Single<MovieDb> = myDbHelper.getMovieById(movieId)
+    override fun getMovieById(movieId: Int): Single<MovieData> = myDbHelper.getMovieById(movieId)
 
     override fun getTvShowById(tvShowId: Int): Single<TvShowData> =
         myDbHelper.getTvShowById(tvShowId)
@@ -23,10 +22,10 @@ class MyRepositoryImpl(
     override fun getMovieData(language: String): Single<MovieResponse> =
         apiServiceInterface.getMovieData(language)
 
-    override fun saveMovie(movieDb: MovieDb): Completable =
+    override fun saveMovie(movieDb: MovieData): Completable =
         myDbHelper.saveMovie(movieDb)
 
-    override fun loadAllMovies(): Flowable<List<MovieDb>> =
+    override fun loadAllMovies(): Flowable<List<MovieData>> =
         myDbHelper.loadAllMovies()
 
     override fun deleteMovieById(movieId: Int) =

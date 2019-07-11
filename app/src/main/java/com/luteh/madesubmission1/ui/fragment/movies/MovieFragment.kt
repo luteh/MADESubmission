@@ -14,7 +14,7 @@ import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
-import com.luteh.madesubmission1.data.model.api.movie.MovieData
+import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.fragment.movies.adapter.MovieAdapter
 import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickListener

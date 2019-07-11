@@ -4,11 +4,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.api.movie.MovieData
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
-import com.luteh.madesubmission1.data.model.db.MovieDb
-import com.luteh.madesubmission1.data.model.db.TvShowDb
-import io.reactivex.Completable
+import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -30,17 +27,8 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
     }
 
     private fun saveMovie(data: MovieData) {
-        val movieDb = MovieDb(
-            data.id,
-            data.voteAverage,
-            data.title,
-            data.popularity,
-            data.posterPath,
-            data.originalLanguage,
-            data.backdropPath, data.overview, data.releaseDate
-        )
         compositeDisposable.add(
-            myRepository.saveMovie(movieDb)
+            myRepository.saveMovie(data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

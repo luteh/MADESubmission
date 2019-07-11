@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.api.movie.MovieData
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.ui.MyViewModelFactory
 import kotlinx.android.synthetic.main.detail_activity.*
 import org.jetbrains.anko.longToast

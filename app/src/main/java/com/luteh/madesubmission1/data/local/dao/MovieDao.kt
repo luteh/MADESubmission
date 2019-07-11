@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -17,13 +17,13 @@ import io.reactivex.Single
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovie(movieDb: MovieDb): Completable
+    fun insertMovie(movieDb: MovieData): Completable
 
     @Query("SELECT * FROM movie_db WHERE id = :movieId")
-    fun getMovieById(movieId: Int): Single<MovieDb>
+    fun getMovieById(movieId: Int): Single<MovieData>
 
     @Query("SELECT * FROM movie_db")
-    fun loadAllMovies(): Flowable<List<MovieDb>>
+    fun loadAllMovies(): Flowable<List<MovieData>>
 
     @Query("DELETE FROM movie_db WHERE id = :movieId")
     fun deleteMovieById(movieId: Int): Completable

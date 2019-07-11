@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 import kotlinx.android.synthetic.main.home_item.view.*
 
 /**
@@ -17,7 +17,7 @@ class FavoriteMovieViewHolder(
     private val favoriteMovieItemListener: FavoriteMovieItemListener
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindTo(data: MovieDb) {
+    fun bindTo(data: MovieData) {
 
         data.let {
             with(itemView) {

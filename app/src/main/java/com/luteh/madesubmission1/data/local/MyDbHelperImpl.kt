@@ -1,23 +1,22 @@
 package com.luteh.madesubmission1.data.local
 
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
-import com.luteh.madesubmission1.data.model.db.MovieDb
-import com.luteh.madesubmission1.data.model.db.TvShowDb
+import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
 class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
-    override fun getMovieById(movieId: Int): Single<MovieDb> =
+    override fun getMovieById(movieId: Int): Single<MovieData> =
         myDatabase.movieDao().getMovieById(movieId)
 
     override fun getTvShowById(tvShowId: Int): Single<TvShowData> =
         myDatabase.tvShowDao().getTvShowById(tvShowId)
 
-    override fun saveMovie(movieDb: MovieDb): Completable =
+    override fun saveMovie(movieDb: MovieData): Completable =
         myDatabase.movieDao().insertMovie(movieDb)
 
-    override fun loadAllMovies(): Flowable<List<MovieDb>> =
+    override fun loadAllMovies(): Flowable<List<MovieData>> =
         myDatabase.movieDao().loadAllMovies()
 
     override fun deleteMovieById(movieId: Int) =

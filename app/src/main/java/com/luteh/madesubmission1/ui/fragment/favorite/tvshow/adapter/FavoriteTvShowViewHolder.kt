@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import kotlinx.android.synthetic.main.home_item.view.*
 
 /**

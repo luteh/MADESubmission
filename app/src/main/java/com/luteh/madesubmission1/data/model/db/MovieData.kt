@@ -1,38 +1,49 @@
-package com.luteh.madesubmission1.data.model.api.movie
+package com.luteh.madesubmission1.data.model.db
 
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.luteh.madesubmission1.common.constant.AppConstant
 
+@Entity(tableName = AppConstant.DATABASE_TABLE_MOVIE)
 data class MovieData(
     @SerializedName("vote_count")
+    @ColumnInfo(name = "vote_count")
     val voteCount: Int, // 28
     @SerializedName("id")
+    @PrimaryKey
     val id: Int, // 532321
     @SerializedName("video")
     val video: Boolean, // false
     @SerializedName("vote_average")
+    @ColumnInfo(name = "vote_average")
     val voteAverage: Double, // 5.5
     @SerializedName("title")
     val title: String?, // Re: Zero kara Hajimeru Isekai Seikatsu - Memory Snow
     @SerializedName("popularity")
     val popularity: Double, // 81.084
     @SerializedName("poster_path")
+    @ColumnInfo(name = "poster_path")
     val posterPath: String?, // /xqR4ABkFTFYe8NDJi3knwWX7zfn.jpg
     @SerializedName("original_language")
+    @ColumnInfo(name = "original_language")
     val originalLanguage: String?, // ja
     @SerializedName("original_title")
+    @ColumnInfo(name = "original_title")
     val originalTitle: String?, // Re:ゼロから始める異世界生活 Memory Snow
-    @SerializedName("genre_ids")
-    val genreIds: IntArray?,
     @SerializedName("backdrop_path")
+    @ColumnInfo(name = "backdrop_path")
     val backdropPath: String?, // /8sNz2DxYiYqGkxk66U8BqvuZZjE.jpg
     @SerializedName("adult")
     val adult: Boolean, // false
     @SerializedName("overview")
     val overview: String?, // Subaru and friends finally get a moment of peace, and Subaru goes on a certain secret mission that he must not let anyone find out about! However, even though Subaru is wearing a disguise, Petra and other children of the village immediately figure out who he is. Now that his mission was exposed within five seconds of it starting, what will happen with Subaru's "date course" with Emilia?
     @SerializedName("release_date")
+    @ColumnInfo(name = "release_date")
     val releaseDate: String? // 2018-10-06
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -45,7 +56,6 @@ data class MovieData(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.createIntArray(),
         parcel.readString(),
         parcel.readByte() != 0.toByte(),
         parcel.readString(),
@@ -62,7 +72,6 @@ data class MovieData(
         parcel.writeString(posterPath)
         parcel.writeString(originalLanguage)
         parcel.writeString(originalTitle)
-        parcel.writeIntArray(genreIds)
         parcel.writeString(backdropPath)
         parcel.writeByte(if (adult) 1 else 0)
         parcel.writeString(overview)
@@ -88,10 +97,6 @@ data class MovieData(
         if (posterPath != other.posterPath) return false
         if (originalLanguage != other.originalLanguage) return false
         if (originalTitle != other.originalTitle) return false
-        if (genreIds != null) {
-            if (other.genreIds == null) return false
-            if (!genreIds.contentEquals(other.genreIds)) return false
-        } else if (other.genreIds != null) return false
         if (backdropPath != other.backdropPath) return false
         if (adult != other.adult) return false
         if (overview != other.overview) return false
@@ -110,7 +115,6 @@ data class MovieData(
         result = 31 * result + (posterPath?.hashCode() ?: 0)
         result = 31 * result + (originalLanguage?.hashCode() ?: 0)
         result = 31 * result + (originalTitle?.hashCode() ?: 0)
-        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
         result = 31 * result + (backdropPath?.hashCode() ?: 0)
         result = 31 * result + adult.hashCode()
         result = 31 * result + (overview?.hashCode() ?: 0)

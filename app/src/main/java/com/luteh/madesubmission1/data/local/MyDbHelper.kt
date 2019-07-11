@@ -1,8 +1,7 @@
 package com.luteh.madesubmission1.data.local
 
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
-import com.luteh.madesubmission1.data.model.db.MovieDb
-import com.luteh.madesubmission1.data.model.db.TvShowDb
+import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -13,9 +12,9 @@ import io.reactivex.Single
  */
 interface MyDbHelper {
 
-    fun saveMovie(movieDb: MovieDb): Completable
-    fun getMovieById(movieId: Int): Single<MovieDb>
-    fun loadAllMovies(): Flowable<List<MovieDb>>
+    fun saveMovie(movieDb: MovieData): Completable
+    fun getMovieById(movieId: Int): Single<MovieData>
+    fun loadAllMovies(): Flowable<List<MovieData>>
     fun deleteMovieById(movieId: Int): Completable
 
     fun saveTvShow(tvShowDb: TvShowData): Completable

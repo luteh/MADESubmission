@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.data.model.api.movie
 
 
 import com.google.gson.annotations.SerializedName
+import com.luteh.madesubmission1.data.model.db.MovieData
 
 data class MovieResponse(
     @SerializedName("page")

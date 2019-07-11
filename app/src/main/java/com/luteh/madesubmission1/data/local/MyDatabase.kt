@@ -8,14 +8,14 @@ import androidx.room.TypeConverters
 import com.luteh.madesubmission1.common.constant.AppConstant.DATABASE_NAME
 import com.luteh.madesubmission1.data.local.dao.MovieDao
 import com.luteh.madesubmission1.data.local.dao.TvShowDao
-import com.luteh.madesubmission1.data.model.api.tvshow.TvShowData
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
+import com.luteh.madesubmission1.data.model.db.TvShowData
 
 /**
  * Created by Luthfan Maftuh on 7/5/2019.
  * Email luthfanmaftuh@gmail.com
  */
-@Database(entities = [MovieDb::class, TvShowData::class], version = 2)
+@Database(entities = [MovieData::class, TvShowData::class], version = 3)
 @TypeConverters(Converter::class)
 abstract class MyDatabase : RoomDatabase() {
 

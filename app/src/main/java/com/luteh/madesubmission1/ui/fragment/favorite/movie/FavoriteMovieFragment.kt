@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovieAdapter
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovieItemListener
@@ -71,7 +71,7 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieItemListener, Favorit
         }
     }
 
-    override fun onItemClicked(data: MovieDb) {
+    override fun onItemClicked(data: MovieData) {
         startActivity<DetailActivity>(AppConstant.KEY_BUNDLE_HOME_DATA to data)
     }
 }

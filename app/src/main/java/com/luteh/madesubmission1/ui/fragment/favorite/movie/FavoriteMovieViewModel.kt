@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -17,7 +17,7 @@ class FavoriteMovieViewModel(private val myRepository: MyRepository) :
 
     private val TAG = "FavoriteMovieViewModel"
 
-    val movieDataList: MutableLiveData<List<MovieDb>> = MutableLiveData()
+    val movieDataList: MutableLiveData<List<MovieData>> = MutableLiveData()
 
     fun loadAllMovies() {
         compositeDisposable.add(

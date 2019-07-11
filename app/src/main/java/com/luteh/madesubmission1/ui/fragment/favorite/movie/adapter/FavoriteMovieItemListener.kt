@@ -1,11 +1,11 @@
 package com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter
 
-import com.luteh.madesubmission1.data.model.db.MovieDb
+import com.luteh.madesubmission1.data.model.db.MovieData
 
 /**
  * Created by Luthfan Maftuh on 7/10/2019.
  * Email luthfanmaftuh@gmail.com
  */
 interface FavoriteMovieItemListener {
-    fun onItemClicked(data: MovieDb)
+    fun onItemClicked(data: MovieData)
 }
