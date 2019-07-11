@@ -9,6 +9,7 @@ import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.ui.activity.home.HomePagerAdapter
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieFragment
+import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowFragment
 import com.luteh.madesubmission1.ui.fragment.movies.MovieFragment
 import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_content.*
@@ -40,7 +41,7 @@ class FavoriteFragment : BaseFragment() {
             pagerAdapter = HomePagerAdapter(childFragmentManager)
             pagerAdapter.apply {
                 addFragment(FavoriteMovieFragment(), getString(R.string.title_movie))
-                addFragment(TvShowFragment(), getString(R.string.title_tv_show))
+                addFragment(FavoriteTvShowFragment(), getString(R.string.title_tv_show))
             }
         }
 
