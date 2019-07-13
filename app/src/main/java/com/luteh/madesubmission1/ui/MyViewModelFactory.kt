@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.ui.activity.detail.DetailViewModel
-import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieViewModel
-import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowViewModel
 import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieViewModel
 import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowViewModel
+import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieViewModel
+import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowViewModel
 
 /**
  * Created by Luthfan Maftuh on 6/29/2019.
