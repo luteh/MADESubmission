@@ -17,9 +17,6 @@ abstract class BaseViewModel<N> : ViewModel() {
 
     var mNavigator: N? = null
         get() = WeakReference(field).get()
-        set(navigator) {
-            field = navigator
-        }
 
     override fun onCleared() {
         compositeDisposable.clear()
