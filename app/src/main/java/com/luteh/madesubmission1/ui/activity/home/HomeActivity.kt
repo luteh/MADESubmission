@@ -19,16 +19,17 @@ import java.util.*
 
 class HomeActivity : BaseActivity() {
 
+    private var oldLanguage = Locale.getDefault().toString()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
-        changeFragment(R.id.layout_home_container, DiscoverFragment(), R.string.title_discover)
         nav_home.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        nav_home.selectedItemId = R.id.menu_discover
 
-        val currentLanguageCode = Locale.getDefault().toString()
         Commons.currentLanguage.value =
-            if (currentLanguageCode.contains("en")) LANGUAGE_CODE_ENGLISH else LANGUAGE_CODE_INDONESIAN
+            if (oldLanguage.contains("en")) LANGUAGE_CODE_ENGLISH else LANGUAGE_CODE_INDONESIAN
     }
 
     private val onNavigationItemSelectedListener =
@@ -68,5 +69,13 @@ class HomeActivity : BaseActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (Commons.currentLanguage.value != oldLanguage) {
+            nav_home.selectedItemId = R.id.menu_discover
+            oldLanguage = Commons.currentLanguage.value!!
+        }
     }
 }

@@ -23,11 +23,11 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by Luthfan Maftuh on 6/25/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class TvShowFragment : BaseFragment(), OnTvShowItemClickListener, TvShowNavigator {
+class DiscoverTvShowFragment : BaseFragment(), OnTvShowItemClickListener, DiscoverTvShowNavigator {
 
-    private val TAG = "TvShowFragment"
+    private val TAG = "DiscoverTvShowFragment"
 
-    private lateinit var viewModel: TvShowViewModel
+    private lateinit var viewModel: DiscoverTvShowViewModel
 
     private val tvShowAdapter = TvShowAdapter()
 
@@ -59,7 +59,7 @@ class TvShowFragment : BaseFragment(), OnTvShowItemClickListener, TvShowNavigato
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(TvShowViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DiscoverTvShowViewModel::class.java)
         viewModel.mNavigator = this
 
         viewModel.mIsLoading.observe(this, androidx.lifecycle.Observer {
@@ -83,7 +83,7 @@ class TvShowFragment : BaseFragment(), OnTvShowItemClickListener, TvShowNavigato
             adapter = tvShowAdapter
         }
 
-        tvShowAdapter.setItemClickListener(this@TvShowFragment)
+        tvShowAdapter.setItemClickListener(this@DiscoverTvShowFragment)
 
     }
 

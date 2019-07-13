@@ -27,11 +27,11 @@ import org.jetbrains.anko.support.v4.startActivity
  * A simple [Fragment] subclass.
  *
  */
-class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
+class DiscoverMovieFragment : BaseFragment(), OnMovieItemClickListener, DiscoverMovieNavigator {
 
-    private val TAG = "MovieFragment"
+    private val TAG = "DiscoverMovieFragment"
 
-    private lateinit var viewModel: MovieViewModel
+    private lateinit var viewModel: DiscoverMovieViewModel
 
     private val movieAdapter = MovieAdapter()
 
@@ -63,7 +63,7 @@ class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DiscoverMovieViewModel::class.java)
         viewModel.mNavigator = this
 
         viewModel.mIsLoading.observe(this, androidx.lifecycle.Observer {
@@ -87,7 +87,7 @@ class MovieFragment : BaseFragment(), OnMovieItemClickListener, MovieNavigator {
             adapter = movieAdapter
         }
 
-        movieAdapter.setItemClickListener(this@MovieFragment)
+        movieAdapter.setItemClickListener(this@DiscoverMovieFragment)
     }
 
     override fun onItemClicked(data: MovieData) {

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.base.BaseFragment
 import com.luteh.madesubmission1.ui.activity.home.HomePagerAdapter
-import com.luteh.madesubmission1.ui.fragment.discover.movies.MovieFragment
-import com.luteh.madesubmission1.ui.fragment.discover.tvshow.TvShowFragment
+import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieFragment
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowFragment
 import kotlinx.android.synthetic.main.home_content.*
 
 /**
@@ -37,8 +37,8 @@ class DiscoverFragment : BaseFragment() {
         if (!::pagerAdapter.isInitialized) {
             pagerAdapter = HomePagerAdapter(childFragmentManager)
             pagerAdapter.apply {
-                addFragment(MovieFragment(), getString(R.string.title_movie))
-                addFragment(TvShowFragment(), getString(R.string.title_tv_show))
+                addFragment(DiscoverMovieFragment(), getString(R.string.title_movie))
+                addFragment(DiscoverTvShowFragment(), getString(R.string.title_tv_show))
             }
         }
 

@@ -1,10 +1,10 @@
-package com.luteh.madesubmission1.ui.fragment.discover.tvshow
+package com.luteh.madesubmission1.ui.fragment.discover.movies
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.db.TvShowData
+import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -13,24 +13,26 @@ import io.reactivex.schedulers.Schedulers
  * Email luthfanmaftuh@gmail.com
  */
 @Suppress("UnstableApiUsage")
-class TvShowViewModel(private val myRepository: MyRepository) : BaseViewModel<TvShowNavigator>() {
+class DiscoverMovieViewModel(private val myRepository: MyRepository) : BaseViewModel<DiscoverMovieNavigator>() {
 
-    private val TAG = "TvShowViewModel"
+    private val TAG = "DiscoverMovieViewModel"
 
-    val tvShowDatas: MutableLiveData<List<TvShowData>> = MutableLiveData()
+    val movieDatas: MutableLiveData<List<MovieData>> = MutableLiveData()
 
-    fun getTvShowData(language: String) {
+    fun getMovieData(language: String) {
         compositeDisposable.add(
-            myRepository.getTvShowData(language)
+            myRepository.getMovieData(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mIsLoading.value = true }
                 .doOnTerminate { mIsLoading.value = false }
                 .subscribe({ response ->
-                    tvShowDatas.value = response.tvShowData
+                    movieDatas.value = response.movieData
                 },
-                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}")
-                    mNavigator?.onErrorGetTvShowData()})
+                    { throwable ->
+                        Log.e(TAG, "getMovieData: ${throwable.message}")
+                        mNavigator?.onErrorGetMovieData()
+                    })
         )
     }
 }
