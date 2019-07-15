@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.luteh.madesubmission1">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApp"
@@ -14,9 +14,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.luteh.madesubmission1.ui.activity.detail.DetailActivity"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTask" />
         <activity
             android:name="com.luteh.madesubmission1.ui.activity.home.HomeActivity"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
