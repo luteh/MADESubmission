@@ -12,12 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver android:name=".ui.widget.FavoriteMovieWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_movie_widget_info" />
+        </receiver>
+
         <activity
-            android:name="com.luteh.madesubmission1.ui.activity.detail.DetailActivity"
+            android:name=".ui.activity.detail.DetailActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.luteh.madesubmission1.ui.activity.home.HomeActivity"
+            android:name=".ui.activity.home.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask">
             <intent-filter>

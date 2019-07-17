@@ -20,5 +20,8 @@
     <string name="title_like">Like</string>
     <string name="label_message_save_detail_success">Saved to your favorite lists</string>
     <string name="label_message_save_detail_error">Something wrong, please try again</string>
+    <string name="appwidget_text" translatable="false">EXAMPLE</string>
+    <string name="add_widget" translatable="false">Add widget</string>
+    <string name="title_favorite_movie">Favorite Movie</string>
 
 </resources>
