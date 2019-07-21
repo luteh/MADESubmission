@@ -19,5 +19,6 @@
     <string name="label_message_save_detail_success">Saved to your favorite lists</string>
     <string name="label_message_save_detail_error">Terjadi kesalahan, silahkan coba lagi</string>
     <string name="title_favorite_movie">Film Kesukaan</string>
+    <string name="label_no_data">TIDAK ADA DATA</string>
 
 </resources>
