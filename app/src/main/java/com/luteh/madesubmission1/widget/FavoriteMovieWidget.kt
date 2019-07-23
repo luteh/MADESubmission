@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.ui.widget
+package com.luteh.madesubmission1.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -25,7 +25,11 @@ class FavoriteMovieWidget : AppWidgetProvider() {
         Log.d(TAG, "onUpdate: ")
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
+            updateAppWidget(
+                context,
+                appWidgetManager,
+                appWidgetId
+            )
         }
 
     }

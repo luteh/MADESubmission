@@ -1,7 +1,6 @@
 package com.luteh.madesubmission1.services
 
 import android.content.Intent
-import android.util.Log
 import android.widget.RemoteViewsService
 
 /**
@@ -11,8 +10,5 @@ import android.widget.RemoteViewsService
 class StackWidgetService : RemoteViewsService() {
 
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory =
-         StackRemoteViewsFactory(this.applicationContext)
-
-
-
+        StackRemoteViewsFactory(this.applicationContext)
 }

@@ -25,6 +25,9 @@ interface MovieDao {
     @Query("SELECT * FROM movie_db")
     fun loadAllMovies(): Flowable<List<MovieData>>
 
+    @Query("SELECT * FROM movie_db")
+    fun loadAllMoviesSync(): List<MovieData>
+
     @Query("DELETE FROM movie_db WHERE id = :movieId")
     fun deleteMovieById(movieId: Int): Completable
 }
