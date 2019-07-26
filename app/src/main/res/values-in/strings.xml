@@ -20,5 +20,12 @@
     <string name="label_message_save_detail_error">Terjadi kesalahan, silahkan coba lagi</string>
     <string name="title_favorite_movie">Film Kesukaan</string>
     <string name="label_no_data">TIDAK ADA DATA</string>
+    <string name="label_return_to_app">Pengingat untuk kembali ke aplikasi</string>
+    <string name="title_daily_reminder">Pengingat Harian</string>
+    <string name="title_release_reminder">Pengingat Rilis</string>
+    <string name="label_release_reminder">Pengingat menunjukkan film yang dirilis hari ini</string>
+    <string name="title_setting">Pengaturan</string>
+    <string name="title_change_language">Ubah Bahasa</string>
+    <string name="title_activity_settings">Pengaturan</string>
 
 </resources>

@@ -15,7 +15,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // Add a BuildConfig
-        buildConfigField("String" , "TMDB_API_KEY" , '"e7e51ae93f8d998945ad19fb49e1bb5a"')
+        buildConfigField("String", "TMDB_API_KEY", '"e7e51ae93f8d998945ad19fb49e1bb5a"')
     }
     buildTypes {
         release {
@@ -56,6 +56,9 @@ dependencies {
 
     // Android Material Design
     implementation 'com.google.android.material:material:1.1.0-alpha08'
+
+    // Preference
+    implementation "androidx.preference:preference:1.0.0"
 
     // Anko Commons
     implementation "org.jetbrains.anko:anko:$anko_version"

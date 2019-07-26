@@ -7,19 +7,6 @@
     android:background="@color/colorBackgroundContent"
     tools:context=".ui.activity.home.HomeActivity">
 
-    <!--<com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_main"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:tabGravity="fill"
-        app:tabMaxWidth="0dp"
-        app:tabMode="fixed" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
     <FrameLayout
         android:id="@+id/layout_home_container"
         android:layout_width="match_parent"

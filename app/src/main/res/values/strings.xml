@@ -24,5 +24,12 @@
     <string name="add_widget" translatable="false">Add widget</string>
     <string name="title_favorite_movie">Favorite Movie</string>
     <string name="label_no_data">NO DATA</string>
+    <string name="label_return_to_app">Reminder for return to app</string>
+    <string name="title_daily_reminder">Daily Reminder</string>
+    <string name="title_release_reminder">Release Reminder</string>
+    <string name="label_release_reminder">Reminder showing the movie that released today</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_change_language">Change Language</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

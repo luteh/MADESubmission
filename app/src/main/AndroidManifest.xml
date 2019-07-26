@@ -12,7 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".ui.activity.settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".ui.activity.home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luteh.madesubmission1.ui.activity.home.HomeActivity" />
+        </activity>
         <activity
             android:name=".ui.activity.detail.DetailActivity"
             android:configChanges="orientation|screenSize"
@@ -39,7 +46,7 @@
         </receiver>
 
         <service
-            android:name="com.luteh.madesubmission1.services.StackWidgetService"
+            android:name=".services.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 

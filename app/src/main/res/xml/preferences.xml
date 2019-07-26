@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:disableDependentsState="true"
+        android:key="RELEASE_REMINDER"
+        android:summary="@string/label_release_reminder"
+        android:title="@string/title_release_reminder" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:disableDependentsState="true"
+        android:key="DAILY_REMINDER"
+        android:summary="@string/label_return_to_app"
+        android:title="@string/title_daily_reminder" />
+</androidx.preference.PreferenceScreen>

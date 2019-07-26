@@ -11,9 +11,11 @@ import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseActivity
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
+import com.luteh.madesubmission1.ui.activity.settings.SettingsActivity
 import com.luteh.madesubmission1.ui.fragment.discover.DiscoverFragment
 import com.luteh.madesubmission1.ui.fragment.favorite.FavoriteFragment
 import kotlinx.android.synthetic.main.home_activity.*
+import org.jetbrains.anko.startActivity
 import java.util.*
 
 
@@ -63,6 +65,9 @@ class HomeActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_setting -> {
+                startActivity<SettingsActivity>()
+            }
+            R.id.menu_change_language -> {
                 val intent = Intent(ACTION_LOCALE_SETTINGS)
                 startActivity(intent)
             }
