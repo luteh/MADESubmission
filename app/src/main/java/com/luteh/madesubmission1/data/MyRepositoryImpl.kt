@@ -1,6 +1,7 @@
 package com.luteh.madesubmission1.data
 
-import com.luteh.madesubmission1.data.local.MyDbHelper
+import com.luteh.madesubmission1.data.local.db.MyDbHelper
+import com.luteh.madesubmission1.data.local.prefs.PreferencesHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
@@ -12,7 +13,8 @@ import io.reactivex.Single
 
 class MyRepositoryImpl(
     private val apiServiceInterface: ApiServiceInterface,
-    private val myDbHelper: MyDbHelper
+    private val myDbHelper: MyDbHelper,
+    private val preferencesHelper: PreferencesHelper
 ) : MyRepository {
     override fun getMovieById(movieId: Int): Single<MovieData> = myDbHelper.getMovieById(movieId)
 
@@ -42,4 +44,10 @@ class MyRepositoryImpl(
 
     override fun getTvShowData(language: String): Single<TvShowResponse> =
         apiServiceInterface.getTvShowData(language)
+
+    override fun isReleaseReminderEnabled(): Boolean =
+        preferencesHelper.isReleaseReminderEnabled()
+
+    override fun isDailyReminderEnabled(): Boolean =
+        preferencesHelper.isDailyReminderEnabled()
 }

@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.local
+package com.luteh.madesubmission1.data.local.db
 
 import android.content.Context
 import androidx.room.Database
@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.luteh.madesubmission1.common.constant.AppConstant.DATABASE_NAME
-import com.luteh.madesubmission1.data.local.dao.MovieDao
-import com.luteh.madesubmission1.data.local.dao.TvShowDao
+import com.luteh.madesubmission1.data.local.db.dao.MovieDao
+import com.luteh.madesubmission1.data.local.db.dao.TvShowDao
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 

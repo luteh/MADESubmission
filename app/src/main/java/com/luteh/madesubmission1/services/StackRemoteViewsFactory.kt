@@ -9,7 +9,7 @@ import android.widget.RemoteViewsService
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.data.local.MyDatabase
+import com.luteh.madesubmission1.data.local.db.MyDatabase
 import com.luteh.madesubmission1.widget.FavoriteMovieWidget
 import java.util.*
 

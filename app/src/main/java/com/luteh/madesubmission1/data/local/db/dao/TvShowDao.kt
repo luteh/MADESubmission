@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.local.dao
+package com.luteh.madesubmission1.data.local.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.local
+package com.luteh.madesubmission1.data.local.db
 
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
@@ -6,7 +6,8 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 
-class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
+class MyDbHelperImpl(private val myDatabase: MyDatabase) :
+    MyDbHelper {
     override fun getMovieById(movieId: Int): Single<MovieData> =
         myDatabase.movieDao().getMovieById(movieId)
 

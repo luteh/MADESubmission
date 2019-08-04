@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.local
+package com.luteh.madesubmission1.data.local.db
 
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData

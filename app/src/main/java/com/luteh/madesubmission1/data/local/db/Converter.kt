@@ -1,4 +1,4 @@
-package com.luteh.madesubmission1.data.local
+package com.luteh.madesubmission1.data.local.db
 
 import androidx.room.TypeConverter
 

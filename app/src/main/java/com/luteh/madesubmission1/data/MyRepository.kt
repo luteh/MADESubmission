@@ -26,4 +26,7 @@ interface MyRepository {
     fun getTvShowById(tvShowId: Int): Single<TvShowData>
     fun loadAllTvShows(): Flowable<List<TvShowData>>
     fun deleteTvShowById(tvShowId: Int): Completable
+
+    fun isReleaseReminderEnabled(): Boolean
+    fun isDailyReminderEnabled(): Boolean
 }
