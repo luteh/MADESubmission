@@ -41,6 +41,7 @@ ext {
     glide_version = '4.9.0'
     room_version = '2.1.0'
     circleimageview_version = '3.0.0'
+    work_version = "2.1.0"
 }
 
 dependencies {
@@ -97,4 +98,6 @@ dependencies {
     // Circle Image View
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
 
+    // Work Manager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 }
