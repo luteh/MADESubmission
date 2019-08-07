@@ -1,6 +1,7 @@
 package com.luteh.madesubmission1.workers
 
 import android.content.Context
+import android.util.Log
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -14,7 +15,10 @@ import java.util.*
 class DailyReminderWorker(appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
 
+    private val TAG = "DailyReminderWorker"
+
     override fun doWork(): Result {
+        Log.d(TAG, "doWork: daily worker")
         val title = inputData.getString(AppConstant.EXTRA_NOTIF_TITLE)
         val text = inputData.getString(AppConstant.EXTRA_NOTIF_TEXT)
         val id = inputData.getLong(AppConstant.EXTRA_NOTIF_ID, 0).toInt()
@@ -23,11 +27,7 @@ class DailyReminderWorker(appContext: Context, workerParams: WorkerParameters) :
         return Result.success()
     }
 
-    /* override suspend fun doWork(): Result {
-         return Result.success()
-     }*/
-
-    companion object {
+    /*companion object {
         private const val REMINDER_WORK_NAME = "reminder"
         private const val PARAM_NAME = "name" // optional - send parameter to worker
         // private const val RESULT_ID = "id"
@@ -42,7 +42,7 @@ class DailyReminderWorker(appContext: Context, workerParams: WorkerParameters) :
 
         }
 
-        /*fun runAt() {
+        *//*fun runAt() {
             val workManager = WorkManager.getInstance()
 
             // trigger at 8:30am
@@ -60,11 +60,11 @@ class DailyReminderWorker(appContext: Context, workerParams: WorkerParameters) :
             Timber.d("runAt=${duration.seconds}s")
 
             // optional constraints
-            *//*
+            *//**//*
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
-             *//*
+             *//**//*
 
             // optional data
             val data = workDataOf(PARAM_NAME to "Timer 01")
@@ -76,11 +76,11 @@ class DailyReminderWorker(appContext: Context, workerParams: WorkerParameters) :
                 .build()
 
             workManager.enqueueUniqueWork(REMINDER_WORK_NAME, ExistingWorkPolicy.REPLACE, workRequest)
-        }*/
+        }*//*
 
         fun cancel() {
             val workManager = WorkManager.getInstance()
             workManager.cancelUniqueWork(REMINDER_WORK_NAME)
         }
-    }
+    }*/
 }

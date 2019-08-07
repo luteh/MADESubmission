@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.base.BaseActivity
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
@@ -19,10 +20,8 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
 
-class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
+class DetailActivity : BaseActivity(), DetailNavigator {
 
-    override val kodein: Kodein by closestKodein()
-    private val viewModelFactory: MyViewModelFactory by instance()
     private lateinit var viewModel: DetailViewModel
 
     private lateinit var bundleData: Any

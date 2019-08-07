@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.ui.activity.detail.DetailViewModel
+import com.luteh.madesubmission1.ui.activity.settings.SettingsViewModel
 import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieViewModel
 import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowViewModel
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.FavoriteMovieViewModel
@@ -24,6 +25,7 @@ class MyViewModelFactory(private val myRepository: MyRepository) :
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> DetailViewModel(myRepository) as T
             modelClass.isAssignableFrom(FavoriteMovieViewModel::class.java) -> FavoriteMovieViewModel(myRepository) as T
             modelClass.isAssignableFrom(FavoriteTvShowViewModel::class.java) -> FavoriteTvShowViewModel(myRepository) as T
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> SettingsViewModel(myRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
