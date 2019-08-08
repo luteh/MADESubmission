@@ -27,5 +27,7 @@
     <string name="title_setting">Pengaturan</string>
     <string name="title_change_language">Ubah Bahasa</string>
     <string name="title_activity_settings">Pengaturan</string>
+    <string name="title_catalogue_movie">Katalog Film</string>
+    <string name="label_message_catalogue_movie">Katalog Film kangen kamu!</string>
 
 </resources>

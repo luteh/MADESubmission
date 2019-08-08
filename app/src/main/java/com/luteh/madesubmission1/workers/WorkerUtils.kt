@@ -6,10 +6,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
+import androidx.work.*
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.ui.activity.home.HomeActivity
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by Luthfan Maftuh on 8/5/2019.
@@ -17,10 +19,57 @@ import java.util.*
  */
 object WorkerUtils {
 
+    val defaultConstraints = Constraints.Builder()
+        .setRequiresCharging(false)
+        .setRequiresStorageNotLow(false)
+        .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+        .setRequiresBatteryNotLow(false)
+        .build()
+
+    fun getDailyWorkData(context: Context) =
+        workDataOf(
+            AppConstant.KEY_EXTRA_NOTIF_DAILY_TITLE to context.getString(R.string.title_catalogue_movie),
+            AppConstant.KEY_EXTRA_NOTIF_DAILY_TEXT to context.getString(R.string.label_message_catalogue_movie),
+            AppConstant.KEY_EXTRA_NOTIF_DAILY_ID to (Math.random() * 50 + 1).toInt()
+        )
+
+    fun getDelayInMillis(): Long {
+        val currentDate = Calendar.getInstance()
+        val dueDate = Calendar.getInstance()
+
+        // Set Execution around 07:00:00 AM
+        dueDate.set(Calendar.HOUR_OF_DAY, 7)
+        dueDate.set(Calendar.MINUTE, 0)
+        dueDate.set(Calendar.SECOND, 0)
+
+        // Add the times if current time greater than due time
+        // To handle daily worker time if previous worker has been successful
+        if (dueDate.before(currentDate)) {
+            dueDate.add(Calendar.HOUR_OF_DAY, 24)
+        }
+        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+
+        return timeDiff
+    }
+
+    fun startDailyReminderWorker(context: Context) {
+        val requestBuilder = OneTimeWorkRequestBuilder<DailyReminderWorker>()
+            .setInputData(getDailyWorkData(context))
+            .setConstraints(defaultConstraints)
+            .setInitialDelay(getDelayInMillis(), TimeUnit.MILLISECONDS)
+            .build()
+
+        WorkManager.getInstance(context).beginUniqueWork(
+            AppConstant.DAILY_REMINDER_WORK_NAME,
+            ExistingWorkPolicy.REPLACE,
+            requestBuilder
+        ).enqueue()
+    }
+
     fun sendNotification(context: Context, title: String, message: String, id: Int) {
         val intent = Intent(context, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        intent.putExtra(AppConstant.EXTRA_NOTIF_ID, id)
+        intent.putExtra(AppConstant.KEY_EXTRA_NOTIF_DAILY_ID, id)
 
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 

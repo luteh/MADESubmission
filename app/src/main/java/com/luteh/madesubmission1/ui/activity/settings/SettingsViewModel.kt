@@ -1,42 +1,25 @@
 package com.luteh.madesubmission1.ui.activity.settings
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequest
+import android.content.Context
 import androidx.work.WorkManager
 import com.luteh.madesubmission1.common.base.BaseViewModel
+import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.workers.NotifyInitialWorker
+import com.luteh.madesubmission1.workers.WorkerUtils
 
 /**
  * Created by Luthfan Maftuh on 8/5/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class SettingsViewModel(private val myRepository: MyRepository) :
+class SettingsViewModel(private val context: Context, private val myRepository: MyRepository) :
     BaseViewModel<SettingsNavigator>() {
 
-    private val TAG = "SettingsViewModel"
-
-    private val dailyReminderWorkName = "dailyReminderWorker"
-    private val periodicWorkTag = "periodicNotifiWork"
-
-    private val workManager = WorkManager.getInstance()
-
-    fun startDailyReminder(owner: LifecycleOwner) {
-        val requestBuilder = OneTimeWorkRequest.Builder(NotifyInitialWorker::class.java)
-//            .setInitialDelay(5, TimeUnit.SECONDS)
-            .build()
-
-        workManager.beginUniqueWork(
-            dailyReminderWorkName,
-            ExistingWorkPolicy.REPLACE,
-            requestBuilder
-        ).enqueue()
+    fun startDailyReminder() {
+        WorkerUtils.startDailyReminderWorker(context)
     }
 
     fun cancelDailyReminder() {
-        workManager.cancelUniqueWork(dailyReminderWorkName)
-        workManager.cancelUniqueWork(periodicWorkTag)
+        WorkManager.getInstance(context).cancelUniqueWork(AppConstant.DAILY_REMINDER_WORK_NAME)
     }
 
 }

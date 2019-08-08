@@ -21,10 +21,10 @@ object AppConstant {
     const val DATABASE_TABLE_MOVIE = "movie_db"
     const val DATABASE_TABLE_TV_SHOW = "tv_show_db"
 
-    const val EXTRA_NOTIF_TITLE = "Catalogue Movie"
-    const val EXTRA_NOTIF_TEXT = "Catalogue Movie missing you!"
-    const val EXTRA_NOTIF_ID = "daily_reminder_id"
+    const val KEY_EXTRA_NOTIF_DAILY_TITLE = "KEY_EXTRA_NOTIF_DAILY_TITLE"
+    const val KEY_EXTRA_NOTIF_DAILY_TEXT = "KEY_EXTRA_NOTIF_DAILY_TEXT"
+    const val KEY_EXTRA_NOTIF_DAILY_ID = "KEY_EXTRA_NOTIF_DAILY_ID"
 
-    const val DAILY_REMINDER_WORK_NAME = "daily_reminder"
-    const val RELEASE_REMINDER_WORK_NAME = "release_reminder"
+    const val DAILY_REMINDER_WORK_NAME = "daily_reminder_worker"
+    const val RELEASE_REMINDER_WORK_NAME = "release_reminder_worker"
 }

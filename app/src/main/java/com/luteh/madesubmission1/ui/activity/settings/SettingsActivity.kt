@@ -67,7 +67,7 @@ class SettingsActivity : BaseActivity(), SettingsNavigator {
             dailyReminderPref.setOnPreferenceChangeListener { preference, newValue ->
                 if (!dailyReminderPref.isChecked) {
                     Log.d(TAG, "setupView: Daily Checked")
-                    viewModel.startDailyReminder(this)
+                    viewModel.startDailyReminder()
                 } else
                     viewModel.cancelDailyReminder()
 

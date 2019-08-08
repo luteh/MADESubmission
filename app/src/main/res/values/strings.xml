@@ -34,5 +34,7 @@
 
     <string name="key_release_reminder" translatable="false">RELEASE_REMINDER</string>
     <string name="key_daily_reminder" translatable="false">DAILY_REMINDER</string>
+    <string name="title_catalogue_movie">Catalogue Movie</string>
+    <string name="label_message_catalogue_movie">Catalogue Movie missing you!</string>
 
 </resources>
