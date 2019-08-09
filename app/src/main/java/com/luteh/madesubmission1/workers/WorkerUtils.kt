@@ -38,6 +38,7 @@ object WorkerUtils {
         val dueDate = Calendar.getInstance()
 
         // Set Execution around 07:00:00 AM
+        dueDate.timeInMillis = System.currentTimeMillis()
         dueDate.set(Calendar.HOUR_OF_DAY, 7)
         dueDate.set(Calendar.MINUTE, 0)
         dueDate.set(Calendar.SECOND, 0)
