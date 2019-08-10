@@ -1,6 +1,7 @@
 package com.luteh.madesubmission1.data
 
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
@@ -29,4 +30,6 @@ interface MyRepository {
 
     fun isReleaseReminderEnabled(): Boolean
     fun isDailyReminderEnabled(): Boolean
+
+    fun getMovieReleaseData(todayDate: String): Single<MovieReleaseResponse>
 }

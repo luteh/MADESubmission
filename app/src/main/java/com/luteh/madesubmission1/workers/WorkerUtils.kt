@@ -19,27 +19,27 @@ import java.util.concurrent.TimeUnit
  */
 object WorkerUtils {
 
-    val defaultConstraints = Constraints.Builder()
+    fun getConstraints(networkType: NetworkType): Constraints = Constraints.Builder()
         .setRequiresCharging(false)
         .setRequiresStorageNotLow(false)
-        .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+        .setRequiredNetworkType(networkType)
         .setRequiresBatteryNotLow(false)
         .build()
 
-    fun getDailyWorkData(context: Context) =
+    private fun getDailyWorkData(context: Context) =
         workDataOf(
             AppConstant.KEY_EXTRA_NOTIF_DAILY_TITLE to context.getString(R.string.title_catalogue_movie),
             AppConstant.KEY_EXTRA_NOTIF_DAILY_TEXT to context.getString(R.string.label_message_catalogue_movie),
             AppConstant.KEY_EXTRA_NOTIF_DAILY_ID to (Math.random() * 50 + 1).toInt()
         )
 
-    fun getDelayInMillis(): Long {
+    private fun getDelayInMillis(hourOfDay: Int): Long {
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
 
-        // Set Execution around 07:00:00 AM
+        // Set Execution around [hourOfDay]:00:00 AM
         dueDate.timeInMillis = System.currentTimeMillis()
-        dueDate.set(Calendar.HOUR_OF_DAY, 7)
+        dueDate.set(Calendar.HOUR_OF_DAY, hourOfDay)
         dueDate.set(Calendar.MINUTE, 0)
         dueDate.set(Calendar.SECOND, 0)
 
@@ -56,12 +56,25 @@ object WorkerUtils {
     fun startDailyReminderWorker(context: Context) {
         val requestBuilder = OneTimeWorkRequestBuilder<DailyReminderWorker>()
             .setInputData(getDailyWorkData(context))
-            .setConstraints(defaultConstraints)
-            .setInitialDelay(getDelayInMillis(), TimeUnit.MILLISECONDS)
+            .setConstraints(getConstraints(NetworkType.NOT_REQUIRED))
+            .setInitialDelay(getDelayInMillis(7), TimeUnit.MILLISECONDS)
             .build()
 
         WorkManager.getInstance(context).beginUniqueWork(
             AppConstant.DAILY_REMINDER_WORK_NAME,
+            ExistingWorkPolicy.REPLACE,
+            requestBuilder
+        ).enqueue()
+    }
+
+    fun startReleaseTodayReminderWorker(context: Context) {
+        val requestBuilder = OneTimeWorkRequestBuilder<ReleaseTodayWorker>()
+            .setConstraints(getConstraints(NetworkType.CONNECTED))
+            .setInitialDelay(getDelayInMillis(8), TimeUnit.MILLISECONDS)
+            .build()
+
+        WorkManager.getInstance(context).beginUniqueWork(
+            AppConstant.RELEASE_REMINDER_WORK_NAME,
             ExistingWorkPolicy.REPLACE,
             requestBuilder
         ).enqueue()

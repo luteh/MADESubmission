@@ -3,6 +3,7 @@ package com.luteh.madesubmission1.data
 import com.luteh.madesubmission1.data.local.db.MyDbHelper
 import com.luteh.madesubmission1.data.local.prefs.PreferencesHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
@@ -44,6 +45,9 @@ class MyRepositoryImpl(
 
     override fun getTvShowData(language: String): Single<TvShowResponse> =
         apiServiceInterface.getTvShowData(language)
+
+    override fun getMovieReleaseData(todayDate: String): Single<MovieReleaseResponse> =
+        apiServiceInterface.getMovieReleaseData(todayDate, todayDate)
 
     override fun isReleaseReminderEnabled(): Boolean =
         preferencesHelper.isReleaseReminderEnabled()

@@ -22,4 +22,11 @@ class SettingsViewModel(private val context: Context, private val myRepository: 
         WorkManager.getInstance(context).cancelUniqueWork(AppConstant.DAILY_REMINDER_WORK_NAME)
     }
 
+    fun startReleaseTodayReminder() {
+        WorkerUtils.startReleaseTodayReminderWorker(context)
+    }
+
+    fun cancelReleaseTodayReminder(){
+        WorkManager.getInstance(context).cancelUniqueWork(AppConstant.RELEASE_REMINDER_WORK_NAME)
+    }
 }
