@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.data.remote
 
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import io.reactivex.Single
 import okhttp3.Interceptor
@@ -10,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -29,6 +31,14 @@ interface ApiServiceInterface {
     fun getTvShowData(
         @Query("language") language: String
     ): Single<TvShowResponse>
+
+    // 3/discover/movie?api_key={API KEY}&primary_release_date.gte={TODAY DATE}&primary_release_date.lte={TODAY DATE}
+    @GET(ApiEndPoint.ENDPOINT_MOVIE_DATA)
+    fun getMovieReleaseData(
+        @Query("primary_release_date.gte") todayDate: String,
+        @Query("primary_release_date.lte") todayDate2: String
+
+    ): Single<MovieReleaseResponse>
 
     companion object {
         operator fun invoke(): ApiServiceInterface {
