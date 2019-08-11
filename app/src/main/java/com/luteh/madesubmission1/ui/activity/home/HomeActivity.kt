@@ -26,6 +26,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
+        setSupportActionBar(toolbar_home)
 
         nav_home.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         nav_home.selectedItemId = R.id.menu_discover
