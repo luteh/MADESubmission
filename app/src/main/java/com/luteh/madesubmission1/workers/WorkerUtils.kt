@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.work.*
 import com.luteh.madesubmission1.R
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit
  */
 object WorkerUtils {
 
-    fun getConstraints(networkType: NetworkType): Constraints = Constraints.Builder()
+    private fun getConstraints(networkType: NetworkType): Constraints = Constraints.Builder()
         .setRequiresCharging(false)
         .setRequiresStorageNotLow(false)
         .setRequiredNetworkType(networkType)
@@ -48,6 +49,7 @@ object WorkerUtils {
         if (dueDate.before(currentDate)) {
             dueDate.add(Calendar.HOUR_OF_DAY, 24)
         }
+
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
 
         return timeDiff

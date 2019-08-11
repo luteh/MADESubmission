@@ -15,7 +15,7 @@ import com.luteh.madesubmission1.ui.fragment.favorite.tvshow.FavoriteTvShowViewM
  * Created by Luthfan Maftuh on 6/29/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class MyViewModelFactory(private val context: Context, private val myRepository: MyRepository) :
+class MyViewModelFactory(private val myRepository: MyRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -26,7 +26,7 @@ class MyViewModelFactory(private val context: Context, private val myRepository:
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> DetailViewModel(myRepository) as T
             modelClass.isAssignableFrom(FavoriteMovieViewModel::class.java) -> FavoriteMovieViewModel(myRepository) as T
             modelClass.isAssignableFrom(FavoriteTvShowViewModel::class.java) -> FavoriteTvShowViewModel(myRepository) as T
-            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> SettingsViewModel(context, myRepository) as T
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> SettingsViewModel(myRepository) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

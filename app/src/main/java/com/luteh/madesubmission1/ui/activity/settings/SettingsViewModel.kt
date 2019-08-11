@@ -11,22 +11,22 @@ import com.luteh.madesubmission1.workers.WorkerUtils
  * Created by Luthfan Maftuh on 8/5/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class SettingsViewModel(private val context: Context, private val myRepository: MyRepository) :
+class SettingsViewModel(private val myRepository: MyRepository) :
     BaseViewModel<SettingsNavigator>() {
 
-    fun startDailyReminder() {
+    fun startDailyReminder(context: Context) {
         WorkerUtils.startDailyReminderWorker(context)
     }
 
-    fun cancelDailyReminder() {
+    fun cancelDailyReminder(context: Context) {
         WorkManager.getInstance(context).cancelUniqueWork(AppConstant.DAILY_REMINDER_WORK_NAME)
     }
 
-    fun startReleaseTodayReminder() {
+    fun startReleaseTodayReminder(context: Context) {
         WorkerUtils.startReleaseTodayReminderWorker(context)
     }
 
-    fun cancelReleaseTodayReminder(){
+    fun cancelReleaseTodayReminder(context: Context){
         WorkManager.getInstance(context).cancelUniqueWork(AppConstant.RELEASE_REMINDER_WORK_NAME)
     }
 }

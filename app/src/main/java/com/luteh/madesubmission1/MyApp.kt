@@ -39,6 +39,6 @@ class MyApp : Application(), KodeinAware {
         bind<MyRepository>() with singleton { MyRepositoryImpl(instance(), instance(), instance()) }
 
         // Inject View Model Factory
-        bind() from provider { MyViewModelFactory(instance(), instance()) }
+        bind() from provider { MyViewModelFactory(instance()) }
     }
 }

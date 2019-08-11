@@ -59,7 +59,9 @@ class SettingsActivity : BaseActivity(), SettingsNavigator {
             releaseReminderPref.setOnPreferenceChangeListener { preference, newValue ->
                 if (!releaseReminderPref.isChecked) {
                     Log.d(TAG, "setupView: Release checked")
-                }
+                    viewModel.startReleaseTodayReminder(context!!)
+                } else
+                    viewModel.cancelReleaseTodayReminder(context!!)
 
                 true
             }
@@ -67,9 +69,9 @@ class SettingsActivity : BaseActivity(), SettingsNavigator {
             dailyReminderPref.setOnPreferenceChangeListener { preference, newValue ->
                 if (!dailyReminderPref.isChecked) {
                     Log.d(TAG, "setupView: Daily Checked")
-                    viewModel.startDailyReminder()
+                    viewModel.startDailyReminder(context!!)
                 } else
-                    viewModel.cancelDailyReminder()
+                    viewModel.cancelDailyReminder(context!!)
 
                 true
             }
