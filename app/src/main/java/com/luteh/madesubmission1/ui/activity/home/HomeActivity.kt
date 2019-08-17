@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.widget.SearchView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseActivity
+import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
 import com.luteh.madesubmission1.ui.activity.settings.SettingsActivity
@@ -23,6 +26,10 @@ class HomeActivity : BaseActivity() {
 
     private var oldLanguage = Locale.getDefault().toString()
 
+    companion object {
+        var currentScreen = AppConstant.MOVIE_SCREEN
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
@@ -31,8 +38,27 @@ class HomeActivity : BaseActivity() {
         nav_home.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         nav_home.selectedItemId = R.id.menu_discover
 
+        setupSearchView()
+
         Commons.currentLanguage.value =
             if (oldLanguage.contains("en")) LANGUAGE_CODE_ENGLISH else LANGUAGE_CODE_INDONESIAN
+    }
+
+    private fun setupSearchView() {
+        search_home.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (currentScreen == AppConstant.MOVIE_SCREEN) {
+
+                } else {
+
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
     }
 
     private val onNavigationItemSelectedListener =
@@ -44,6 +70,7 @@ class HomeActivity : BaseActivity() {
                         DiscoverFragment(),
                         R.string.title_discover
                     )
+                    search_home.visibility = View.VISIBLE
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.menu_favorite -> {
@@ -52,6 +79,7 @@ class HomeActivity : BaseActivity() {
                         FavoriteFragment(),
                         R.string.title_favorite
                     )
+                    search_home.visibility = View.GONE
                     return@OnNavigationItemSelectedListener true
                 }
             }
