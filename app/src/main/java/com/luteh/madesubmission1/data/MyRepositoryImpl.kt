@@ -4,7 +4,9 @@ import com.luteh.madesubmission1.data.local.db.MyDbHelper
 import com.luteh.madesubmission1.data.local.prefs.PreferencesHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
+import com.luteh.madesubmission1.data.model.api.moviesearch.MovieSearchResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.tvshowsearch.TvShowSearchResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
@@ -48,6 +50,12 @@ class MyRepositoryImpl(
 
     override fun getMovieReleaseData(todayDate: String): Single<MovieReleaseResponse> =
         apiServiceInterface.getMovieReleaseData(todayDate, todayDate)
+
+    override fun searchMovie(query: String): Single<MovieSearchResponse> =
+        apiServiceInterface.searchMovie(query = query)
+
+    override fun searchTvShow(query: String): Single<TvShowSearchResponse> =
+        apiServiceInterface.searchTvShow(query = query)
 
     override fun isReleaseReminderEnabled(): Boolean =
         preferencesHelper.isReleaseReminderEnabled()

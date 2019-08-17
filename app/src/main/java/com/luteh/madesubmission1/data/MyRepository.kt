@@ -2,7 +2,9 @@ package com.luteh.madesubmission1.data
 
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
+import com.luteh.madesubmission1.data.model.api.moviesearch.MovieSearchResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.tvshowsearch.TvShowSearchResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
@@ -32,4 +34,7 @@ interface MyRepository {
     fun isDailyReminderEnabled(): Boolean
 
     fun getMovieReleaseData(todayDate: String): Single<MovieReleaseResponse>
+
+    fun searchMovie(query: String): Single<MovieSearchResponse>
+    fun searchTvShow(query: String): Single<TvShowSearchResponse>
 }

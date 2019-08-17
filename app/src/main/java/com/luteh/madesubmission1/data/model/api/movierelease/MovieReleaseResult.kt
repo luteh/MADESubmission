@@ -3,7 +3,7 @@ package com.luteh.madesubmission1.data.model.api.movierelease
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class MovieReleaseResult(
     @SerializedName("vote_count")
     val voteCount: Int, // 0
     @SerializedName("id")

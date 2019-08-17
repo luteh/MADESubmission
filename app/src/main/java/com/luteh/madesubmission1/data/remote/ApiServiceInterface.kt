@@ -3,7 +3,9 @@ package com.luteh.madesubmission1.data.remote
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.movierelease.MovieReleaseResponse
+import com.luteh.madesubmission1.data.model.api.moviesearch.MovieSearchResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.tvshowsearch.TvShowSearchResponse
 import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -36,8 +38,21 @@ interface ApiServiceInterface {
     fun getMovieReleaseData(
         @Query("primary_release_date.gte") todayDate: String,
         @Query("primary_release_date.lte") todayDate2: String
-
     ): Single<MovieReleaseResponse>
+
+    // 3/search/movie?api_key=e7e51ae93f8d998945ad19fb49e1bb5a&language=en-US&query=Avenger
+    @GET(ApiEndPoint.ENDPOINT_MOVIE_SEARCH)
+    fun searchMovie(
+        @Query("language") language: String = "en-US",
+        @Query("query") query: String
+    ): Single<MovieSearchResponse>
+
+    // 3/search/tv?api_key=e7e51ae93f8d998945ad19fb49e1bb5a&language=en-US&query=Avenger
+    @GET(ApiEndPoint.ENDPOINT_TV_SHOW_SEARCH)
+    fun searchTvShow(
+        @Query("language") language: String = "en-US",
+        @Query("query") query: String
+    ): Single<TvShowSearchResponse>
 
     companion object {
         operator fun invoke(): ApiServiceInterface {
