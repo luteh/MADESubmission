@@ -13,7 +13,8 @@ import io.reactivex.schedulers.Schedulers
  * Email luthfanmaftuh@gmail.com
  */
 @Suppress("UnstableApiUsage")
-class DiscoverTvShowViewModel(private val myRepository: MyRepository) : BaseViewModel<DiscoverTvShowNavigator>() {
+class DiscoverTvShowViewModel(private val myRepository: MyRepository) :
+    BaseViewModel<DiscoverTvShowNavigator>() {
 
     private val TAG = "DiscoverTvShowViewModel"
 
@@ -29,8 +30,26 @@ class DiscoverTvShowViewModel(private val myRepository: MyRepository) : BaseView
                 .subscribe({ response ->
                     tvShowDatas.value = response.tvShowData
                 },
-                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}")
-                    mNavigator?.onErrorGetTvShowData()})
+                    { throwable ->
+                        Log.e(TAG, "getTvShowData: ${throwable.message}")
+                        mNavigator?.onErrorGetTvShowData()
+                    })
+        )
+    }
+
+    fun searchTvShow(query: String) {
+        compositeDisposable.add(
+            myRepository.searchTvShow(query)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mIsLoading.value = true }
+                .doOnTerminate { mIsLoading.value = false }
+                .subscribe({ response ->
+                    tvShowDatas.value = response.results
+                }, { throwable ->
+                    Log.e(TAG, "searchTvShow: ${throwable.message}")
+                    mNavigator?.onErrorGetTvShowData()
+                })
         )
     }
 }

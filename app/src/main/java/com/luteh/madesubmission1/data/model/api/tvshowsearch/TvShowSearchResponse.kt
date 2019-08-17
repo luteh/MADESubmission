@@ -2,6 +2,7 @@ package com.luteh.madesubmission1.data.model.api.tvshowsearch
 
 
 import com.google.gson.annotations.SerializedName
+import com.luteh.madesubmission1.data.model.db.TvShowData
 
 data class TvShowSearchResponse(
     @SerializedName("page")
@@ -11,5 +12,5 @@ data class TvShowSearchResponse(
     @SerializedName("total_pages")
     val totalPages: Int, // 1
     @SerializedName("results")
-    val results: List<TvShowSearchResult>
+    val results: List<TvShowData>
 )

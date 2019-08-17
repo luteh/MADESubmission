@@ -13,7 +13,8 @@ import io.reactivex.schedulers.Schedulers
  * Email luthfanmaftuh@gmail.com
  */
 @Suppress("UnstableApiUsage")
-class DiscoverMovieViewModel(private val myRepository: MyRepository) : BaseViewModel<DiscoverMovieNavigator>() {
+class DiscoverMovieViewModel(private val myRepository: MyRepository) :
+    BaseViewModel<DiscoverMovieNavigator>() {
 
     private val TAG = "DiscoverMovieViewModel"
 
@@ -33,6 +34,22 @@ class DiscoverMovieViewModel(private val myRepository: MyRepository) : BaseViewM
                         Log.e(TAG, "getMovieData: ${throwable.message}")
                         mNavigator?.onErrorGetMovieData()
                     })
+        )
+    }
+
+    fun searchMovie(query: String) {
+        compositeDisposable.add(
+            myRepository.searchMovie(query)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mIsLoading.value = true }
+                .doOnTerminate { mIsLoading.value = false }
+                .subscribe({ response ->
+                    movieDatas.value = response.results
+                }, { throwable ->
+                    Log.e(TAG, "searchMovie: ${throwable.message}")
+                    mNavigator?.onErrorGetMovieData()
+                })
         )
     }
 }
