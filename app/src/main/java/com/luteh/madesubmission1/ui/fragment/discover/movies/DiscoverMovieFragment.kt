@@ -26,13 +26,24 @@ import org.jetbrains.anko.support.v4.startActivity
  * A simple [Fragment] subclass.
  *
  */
+
+private lateinit var viewModel: DiscoverMovieViewModel
+
 class DiscoverMovieFragment : BaseFragment(), OnMovieItemClickListener, DiscoverMovieNavigator {
 
     private val TAG = "DiscoverMovieFragment"
 
-    private lateinit var viewModel: DiscoverMovieViewModel
 
     private val movieAdapter = MovieAdapter()
+
+    companion object {
+        fun searchMovie(query: String?) {
+            if (query.isNullOrEmpty())
+                viewModel.getMovieData(Commons.currentLanguage.value ?: LANGUAGE_CODE_ENGLISH)
+            else
+                viewModel.searchMovie(query)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,13 +73,15 @@ class DiscoverMovieFragment : BaseFragment(), OnMovieItemClickListener, Discover
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DiscoverMovieViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(DiscoverMovieViewModel::class.java)
         viewModel.mNavigator = this
 
         viewModel.mIsLoading.observe(this, androidx.lifecycle.Observer {
             if (it) {
                 pb_common_loading.visibility = View.VISIBLE
                 rv_main.visibility = View.INVISIBLE
+                layout_no_connection_container.visibility = View.INVISIBLE
             } else {
                 pb_common_loading.visibility = View.INVISIBLE
                 rv_main.visibility = View.VISIBLE

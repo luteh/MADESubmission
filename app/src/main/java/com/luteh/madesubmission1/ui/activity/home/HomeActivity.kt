@@ -15,8 +15,11 @@ import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLI
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
 import com.luteh.madesubmission1.ui.activity.settings.SettingsActivity
 import com.luteh.madesubmission1.ui.fragment.discover.DiscoverFragment
+import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieFragment
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowFragment
 import com.luteh.madesubmission1.ui.fragment.favorite.FavoriteFragment
 import kotlinx.android.synthetic.main.home_activity.*
+import org.jetbrains.anko.appcompat.v7.coroutines.onQueryTextListener
 import org.jetbrains.anko.startActivity
 import java.util.*
 
@@ -44,20 +47,19 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun setupSearchView() {
-        search_home.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
+        search_home.onQueryTextListener {
+            onQueryTextSubmit { query ->
                 if (currentDiscoverPagerPosition == 0) {
                     // Movie Screen
+                    DiscoverMovieFragment.searchMovie(query)
                 } else {
                     // Tv Show Screen
+                    DiscoverTvShowFragment.searchTvShow(query)
                 }
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
+                true
             }
-        })
+        }
     }
 
     private val onNavigationItemSelectedListener =

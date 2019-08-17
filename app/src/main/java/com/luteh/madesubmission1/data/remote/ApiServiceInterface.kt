@@ -40,14 +40,14 @@ interface ApiServiceInterface {
         @Query("primary_release_date.lte") todayDate2: String
     ): Single<MovieReleaseResponse>
 
-    // 3/search/movie?api_key=e7e51ae93f8d998945ad19fb49e1bb5a&language=en-US&query=Avenger
+    // 3/search/movie?api_key={API KEY}&language=en-US&query=Avenger
     @GET(ApiEndPoint.ENDPOINT_MOVIE_SEARCH)
     fun searchMovie(
         @Query("language") language: String = "en-US",
         @Query("query") query: String
     ): Single<MovieSearchResponse>
 
-    // 3/search/tv?api_key=e7e51ae93f8d998945ad19fb49e1bb5a&language=en-US&query=Avenger
+    // 3/search/tv?api_key={API KEY}&language=en-US&query=Avenger
     @GET(ApiEndPoint.ENDPOINT_TV_SHOW_SEARCH)
     fun searchTvShow(
         @Query("language") language: String = "en-US",

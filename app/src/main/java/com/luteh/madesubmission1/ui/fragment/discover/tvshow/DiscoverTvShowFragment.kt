@@ -23,13 +23,23 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by Luthfan Maftuh on 6/25/2019.
  * Email luthfanmaftuh@gmail.com
  */
+
+private lateinit var viewModel: DiscoverTvShowViewModel
+
 class DiscoverTvShowFragment : BaseFragment(), OnTvShowItemClickListener, DiscoverTvShowNavigator {
 
     private val TAG = "DiscoverTvShowFragment"
 
-    private lateinit var viewModel: DiscoverTvShowViewModel
-
     private val tvShowAdapter = TvShowAdapter()
+
+    companion object {
+        fun searchTvShow(query: String?) {
+            if (query.isNullOrEmpty())
+                viewModel.getTvShowData(Commons.currentLanguage.value ?: AppConstant.LANGUAGE_CODE_ENGLISH)
+            else
+                viewModel.searchTvShow(query)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +76,7 @@ class DiscoverTvShowFragment : BaseFragment(), OnTvShowItemClickListener, Discov
             if (it) {
                 pb_common_loading.visibility = View.VISIBLE
                 rv_main.visibility = View.INVISIBLE
+                layout_no_connection_container.visibility = View.INVISIBLE
             } else {
                 pb_common_loading.visibility = View.INVISIBLE
                 rv_main.visibility = View.VISIBLE
