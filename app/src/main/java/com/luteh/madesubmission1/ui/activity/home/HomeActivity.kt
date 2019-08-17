@@ -11,7 +11,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseActivity
-import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
 import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
 import com.luteh.madesubmission1.ui.activity.settings.SettingsActivity
@@ -27,7 +26,7 @@ class HomeActivity : BaseActivity() {
     private var oldLanguage = Locale.getDefault().toString()
 
     companion object {
-        var currentScreen = AppConstant.MOVIE_SCREEN
+        var currentDiscoverPagerPosition = 0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,10 +46,10 @@ class HomeActivity : BaseActivity() {
     private fun setupSearchView() {
         search_home.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (currentScreen == AppConstant.MOVIE_SCREEN) {
-
+                if (currentDiscoverPagerPosition == 0) {
+                    // Movie Screen
                 } else {
-
+                    // Tv Show Screen
                 }
                 return true
             }
