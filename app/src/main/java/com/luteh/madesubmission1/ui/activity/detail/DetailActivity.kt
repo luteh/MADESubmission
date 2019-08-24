@@ -3,7 +3,6 @@ package com.luteh.madesubmission1.ui.activity.detail
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
@@ -12,13 +11,8 @@ import com.luteh.madesubmission1.common.base.BaseActivity
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
-import com.luteh.madesubmission1.ui.MyViewModelFactory
 import kotlinx.android.synthetic.main.detail_activity.*
 import org.jetbrains.anko.longToast
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
-import org.kodein.di.generic.instance
 
 class DetailActivity : BaseActivity(), DetailNavigator {
 

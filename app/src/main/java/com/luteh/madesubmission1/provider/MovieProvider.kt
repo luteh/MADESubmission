@@ -1,30 +1,27 @@
 package com.luteh.madesubmission1.provider
 
 import android.content.ContentProvider
-import android.content.ContentUris
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import com.luteh.madesubmission1.common.constant.AppConstant.DATABASE_TABLE_MOVIE
+import com.luteh.madesubmission1.common.constant.AppConstant
+import com.luteh.madesubmission1.data.local.db.MyDatabase
 import com.luteh.madesubmission1.data.local.db.MyDbHelper
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
-import org.kodein.di.generic.instance
 
-class MovieProvider : ContentProvider(), KodeinAware {
 
-    override val kodein: Kodein by closestKodein(context!!)
-    private val myDbHelper: MyDbHelper by instance()
+class MovieProvider : ContentProvider() {
 
     companion object {
+
         /** The authority of this content provider.  */
-        val AUTHORITY = "com.luteh.madesubmission1.provider"
+        val AUTHORITY = "com.luteh.madesubmission1"
+
+        val TABLE = "moviedatabase"
 
         /** The URI for the Menu table.  */
         val URI_MOVIE = Uri.parse(
-            "content://$AUTHORITY/$DATABASE_TABLE_MOVIE"
+            "content://$AUTHORITY/${AppConstant.DATABASE_TABLE_MOVIE}"
         )
 
         private val MOVIE = 1
@@ -34,26 +31,19 @@ class MovieProvider : ContentProvider(), KodeinAware {
     }
 
     init {
-        // content://com.luteh.madesubmission1.provider/movie_db
-        sUriMatcher.addURI(AUTHORITY, DATABASE_TABLE_MOVIE, MOVIE)
+        // content://com.luteh.madesubmission1/movie_db
+        sUriMatcher.addURI(AUTHORITY, AppConstant.DATABASE_TABLE_MOVIE, MOVIE)
 
-        // content://com.luteh.madesubmission1.provider/movie_db/id
+        // content://com.luteh.madesubmission1/movie_db/id
         sUriMatcher.addURI(
             AUTHORITY,
-            "$DATABASE_TABLE_MOVIE/#",
+            "${AppConstant.DATABASE_TABLE_MOVIE}/#",
             MOVIE_ID
         )
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-        val deleted = when (sUriMatcher.match(uri)) {
-            MOVIE -> myDbHelper.deleteMovieProvider(ContentUris.parseId(uri))
-            else -> 0
-        }
-
-        context!!.contentResolver.notifyChange(URI_MOVIE, null)
-
-        return deleted
+        return 0
     }
 
     override fun getType(uri: Uri): String? {
@@ -61,14 +51,7 @@ class MovieProvider : ContentProvider(), KodeinAware {
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        val added = when (sUriMatcher.match(uri)) {
-            MOVIE -> myDbHelper.insertMovieProvider(values!!)
-            else -> 0
-        }
-
-        context!!.contentResolver.notifyChange(URI_MOVIE, null)
-
-        return ContentUris.withAppendedId(URI_MOVIE, added)
+        return null
     }
 
     override fun onCreate(): Boolean {
@@ -79,8 +62,17 @@ class MovieProvider : ContentProvider(), KodeinAware {
         uri: Uri, projection: Array<String>?, selection: String?,
         selectionArgs: Array<String>?, sortOrder: String?
     ): Cursor? {
-        return null
+        val db = MyDatabase.invoke(context!!).openHelper.readableDatabase
+        val cursor: Cursor?
+        cursor = when (sUriMatcher.match(uri)) {
+            MOVIE -> {
+                db.query("SELECT * FROM ${AppConstant.DATABASE_TABLE_MOVIE}")
+            }
+            else -> null
+        }
+        return cursor
     }
+
 
     override fun update(
         uri: Uri, values: ContentValues?, selection: String?,

@@ -1,11 +1,14 @@
 package com.luteh.madesubmission1.ui.activity.detail
 
+import android.content.ContentValues
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
+import com.luteh.madesubmission1.provider.MovieProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -39,7 +42,6 @@ class DetailViewModel(private val myRepository: MyRepository) : BaseViewModel<De
                     Log.e(TAG, "saveMovie: ${it.message}")
                     mNavigator?.onErrorSaveDetailData()
                 })
-
         )
     }
 

@@ -22,7 +22,4 @@ interface MyDbHelper {
     fun getTvShowById(tvShowId: Int): Single<TvShowData>
     fun loadAllTvShows(): Flowable<List<TvShowData>>
     fun deleteTvShowById(tvShowId: Int): Completable
-
-    fun insertMovieProvider(contentValues: ContentValues):Long
-    fun deleteMovieProvider(movieId: Long):Int
 }

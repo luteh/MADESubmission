@@ -19,6 +19,7 @@
             android:name=".provider.MovieProvider"
             android:authorities="com.luteh.madesubmission1"
             android:enabled="true"
+            android:multiprocess="true"
             android:readPermission="com.luteh.madesubmission1.READ_DATABASE"
             android:writePermission="com.luteh.madesubmission1.WRITE_DATABASE"
             android:exported="true"/>

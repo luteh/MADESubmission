@@ -1,21 +1,16 @@
 package com.luteh.madesubmission1.data.local.db
 
 import android.content.ContentValues
+import android.database.Cursor
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
 
 class MyDbHelperImpl(private val myDatabase: MyDatabase) :
     MyDbHelper {
-
-    override fun insertMovieProvider(contentValues: ContentValues): Long =
-        myDatabase.movieDao().insertMovieProvider(contentValues)
-
-    override fun deleteMovieProvider(movieId: Long): Int =
-        myDatabase.movieDao().deleteMovieProvider(movieId)
-
     override fun getMovieById(movieId: Int): Single<MovieData> =
         myDatabase.movieDao().getMovieById(movieId)
 
