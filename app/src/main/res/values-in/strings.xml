@@ -29,5 +29,6 @@
     <string name="title_activity_settings">Pengaturan</string>
     <string name="title_catalogue_movie">Katalog Film</string>
     <string name="label_message_catalogue_movie">Katalog Film kangen kamu!</string>
-
+    <string name="label_data_not_found">Data not found</string>
+    <string name="label_the_data_will_show_up_here">The data will show up here</string>
 </resources>

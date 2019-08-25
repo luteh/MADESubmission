@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">MADESubmission1</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -37,4 +37,6 @@
     <string name="title_catalogue_movie">Catalogue Movie</string>
     <string name="label_message_catalogue_movie">Catalogue Movie missing you!</string>
 
+    <string name="label_data_not_found">Data not found</string>
+    <string name="label_the_data_will_show_up_here">Data will show up here</string>
 </resources>

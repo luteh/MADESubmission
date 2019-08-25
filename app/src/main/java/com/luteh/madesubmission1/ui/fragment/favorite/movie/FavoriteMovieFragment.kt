@@ -3,6 +3,8 @@ package com.luteh.madesubmission1.ui.fragment.favorite.movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +17,7 @@ import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovi
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovieItemListener
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.no_data_item.*
 import org.jetbrains.anko.support.v4.startActivity
 
 /**
@@ -51,15 +54,18 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieItemListener, Favorit
 
         viewModel.mIsLoading.observe(this, Observer {
             if (it) {
-                pb_common_loading.visibility = View.VISIBLE
-                rv_main.visibility = View.INVISIBLE
+                pb_common_loading.visibility = VISIBLE
+                rv_main.visibility = INVISIBLE
             } else {
-                pb_common_loading.visibility = View.INVISIBLE
-                rv_main.visibility = View.VISIBLE
+                pb_common_loading.visibility = INVISIBLE
+                rv_main.visibility = VISIBLE
             }
         })
 
         viewModel.movieDataList.observe(this, Observer {
+            layout_no_data_item_container.visibility =
+                if (it.isNullOrEmpty()) VISIBLE else INVISIBLE
+
             movieAdapter.setDataSource(it)
         })
     }

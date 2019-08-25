@@ -29,4 +29,7 @@
         layout="@layout/no_connection"
         android:visibility="invisible" />
 
+    <include
+        layout="@layout/no_data_item"
+        android:visibility="invisible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
