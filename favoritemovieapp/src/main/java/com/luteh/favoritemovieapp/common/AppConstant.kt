@@ -6,7 +6,7 @@ package com.luteh.favoritemovieapp.common
  */
 object AppConstant {
 
-    const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500/"
+    const val BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w500"
 
     const val COLUMN_ID = "id"
     const val COLUMN_TITLE = "title"
