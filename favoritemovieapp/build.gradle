@@ -37,6 +37,8 @@ android {
 
 ext {
     glide_version = '4.9.0'
+    rxjava2_version = '2.2.7'
+    rxandroid_version = '2.1.1'
 }
 //
 dependencies {
@@ -55,4 +57,8 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 }
