@@ -3,6 +3,8 @@ package com.luteh.favoritemovieapp.ui
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.luteh.favoritemovieapp.R
@@ -12,6 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.no_data_item.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,6 +61,10 @@ class MainActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ movieDatas ->
+
+                    layout_no_data_item_container.visibility =
+                        if (movieDatas.isNullOrEmpty()) VISIBLE else INVISIBLE
+
                     mainAdapter.setDataSources(movieDatas)
                 }, { throwable ->
                     Log.e(TAG, "onResume: $throwable")
