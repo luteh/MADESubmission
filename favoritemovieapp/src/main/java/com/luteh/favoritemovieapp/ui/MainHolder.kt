@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.luteh.favoritemovieapp.common.AppConstant
 import com.luteh.favoritemovieapp.data.MovieData
+import com.luteh.qasirtest.internal.GlideApp
 import kotlinx.android.synthetic.main.main_item.view.*
 
 /**
@@ -19,8 +20,9 @@ class MainHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 tv_main_title_item.text = it.title
                 rating_main_item.rating = (it.voteAverage / 2).toFloat()
 
-                Glide.with(this)
+                GlideApp.with(this)
                     .load("${AppConstant.BASE_URL_IMAGE}${it.backdropPath}")
+                    .roundedCorners(context, 4)
                     .dontAnimate()
                     .into(iv_main_item)
             }
