@@ -1,6 +1,5 @@
 package com.luteh.favoritemovieapp.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View.INVISIBLE
@@ -8,6 +7,7 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.luteh.favoritemovieapp.R
+import com.luteh.favoritemovieapp.common.AppConstant.URI_MOVIE
 import com.luteh.favoritemovieapp.data.MovieData
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,16 +19,6 @@ import kotlinx.android.synthetic.main.no_data_item.*
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
-
-    /** The authority of this content provider.  */
-    val AUTHORITY = "com.luteh.madesubmission1"
-
-    val TABLE = "movie_db"
-
-    /** The URI for the Menu table.  */
-    val URI_MOVIE = Uri.parse(
-        "content://$AUTHORITY/$TABLE"
-    )
 
     private val compositeDisposable = CompositeDisposable()
 

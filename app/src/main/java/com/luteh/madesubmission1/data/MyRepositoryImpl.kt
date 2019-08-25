@@ -1,6 +1,5 @@
 package com.luteh.madesubmission1.data
 
-import android.content.ContentValues
 import com.luteh.madesubmission1.data.local.db.MyDbHelper
 import com.luteh.madesubmission1.data.local.prefs.PreferencesHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse

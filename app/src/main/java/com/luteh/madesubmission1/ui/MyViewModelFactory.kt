@@ -1,6 +1,5 @@
 package com.luteh.madesubmission1.ui
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.luteh.madesubmission1.data.MyRepository

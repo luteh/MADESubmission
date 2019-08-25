@@ -1,6 +1,5 @@
 package com.luteh.madesubmission1.data.local.db
 
-import android.content.ContentValues
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable

@@ -1,9 +1,9 @@
 package com.luteh.madesubmission1.workers
 
 import android.content.Context
-import androidx.work.*
+import androidx.work.Worker
+import androidx.work.WorkerParameters
 import com.luteh.madesubmission1.common.constant.AppConstant
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by Luthfan Maftuh on 8/6/2019.

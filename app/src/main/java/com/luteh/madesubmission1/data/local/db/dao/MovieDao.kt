@@ -1,7 +1,5 @@
 package com.luteh.madesubmission1.data.local.db.dao
 
-import android.content.ContentValues
-import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

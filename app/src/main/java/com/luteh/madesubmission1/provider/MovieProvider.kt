@@ -7,7 +7,6 @@ import android.database.Cursor
 import android.net.Uri
 import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.local.db.MyDatabase
-import com.luteh.madesubmission1.data.local.db.MyDbHelper
 
 
 class MovieProvider : ContentProvider() {
@@ -15,17 +14,10 @@ class MovieProvider : ContentProvider() {
     companion object {
 
         /** The authority of this content provider.  */
-        val AUTHORITY = "com.luteh.madesubmission1"
+        const val AUTHORITY = "com.luteh.madesubmission1"
 
-        val TABLE = "moviedatabase"
-
-        /** The URI for the Menu table.  */
-        val URI_MOVIE = Uri.parse(
-            "content://$AUTHORITY/${AppConstant.DATABASE_TABLE_MOVIE}"
-        )
-
-        private val MOVIE = 1
-        private val MOVIE_ID = 2
+        private const val MOVIE = 1
+        private const val MOVIE_ID = 2
 
         private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
     }

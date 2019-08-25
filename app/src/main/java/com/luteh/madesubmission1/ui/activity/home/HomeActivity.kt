@@ -6,7 +6,6 @@ import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons

@@ -2,7 +2,6 @@ package com.luteh.favoritemovieapp.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.luteh.favoritemovieapp.common.AppConstant
 import com.luteh.favoritemovieapp.data.MovieData
 import com.luteh.qasirtest.internal.GlideApp

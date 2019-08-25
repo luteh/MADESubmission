@@ -27,7 +27,4 @@ object AppConstant {
 
     const val DAILY_REMINDER_WORK_NAME = "daily_reminder_worker"
     const val RELEASE_REMINDER_WORK_NAME = "release_reminder_worker"
-
-    const val MOVIE_SCREEN = "MOVIE SCREEN"
-    const val TV_SHOW_SCREEN = "TV SHOW SCREEN"
 }
