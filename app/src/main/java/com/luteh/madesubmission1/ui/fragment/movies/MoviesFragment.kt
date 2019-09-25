@@ -2,14 +2,13 @@ package com.luteh.madesubmission1.ui.fragment.movies
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Constants
-import com.luteh.madesubmission1.data.HomeDataFactory
 import com.luteh.madesubmission1.model.HomeData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.adapter.MainAdapter
@@ -22,6 +21,8 @@ import org.jetbrains.anko.support.v4.startActivity
  *
  */
 class MoviesFragment : Fragment(), OnHomeItemClickListener {
+
+    private lateinit var moviesViewModel: MoviesViewModel
 
     private val movieAdapter = MainAdapter()
 
@@ -36,7 +37,12 @@ class MoviesFragment : Fragment(), OnHomeItemClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initViewModel()
         setupRecyclerView()
+    }
+
+    private fun initViewModel() {
+        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
     }
 
     private fun setupRecyclerView() {
@@ -46,7 +52,7 @@ class MoviesFragment : Fragment(), OnHomeItemClickListener {
         }
 
         movieAdapter.apply {
-            setDataSource(HomeDataFactory.getMovieDatas(context!!))
+            setDataSource(moviesViewModel.getMovieDatas(context))
             setItemClickListener(this@MoviesFragment)
         }
     }
