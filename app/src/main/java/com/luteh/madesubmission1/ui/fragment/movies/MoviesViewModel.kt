@@ -11,7 +11,7 @@ import com.luteh.madesubmission1.model.HomeData
  */
 class MoviesViewModel : ViewModel() {
 
-    fun getMovieDatas(context: Context?): List<HomeData> {
-        return HomeDataFactory.getMovieDatas(context!!)
+    fun getMovieDatas(): List<HomeData> {
+        return HomeDataFactory.getMovieDatas()
     }
 }

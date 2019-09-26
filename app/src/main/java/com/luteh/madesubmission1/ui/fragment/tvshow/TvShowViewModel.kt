@@ -11,7 +11,7 @@ import com.luteh.madesubmission1.model.HomeData
  */
 class TvShowViewModel:ViewModel() {
 
-    fun getTvShowDatas(context: Context?): List<HomeData> {
-        return HomeDataFactory.getTvShowDatas(context!!)
+    fun getTvShowDatas(): List<HomeData> {
+        return HomeDataFactory.getTvShowDatas()
     }
 }

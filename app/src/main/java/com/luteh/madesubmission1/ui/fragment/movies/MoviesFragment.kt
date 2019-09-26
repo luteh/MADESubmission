@@ -52,7 +52,7 @@ class MoviesFragment : Fragment(), OnHomeItemClickListener {
         }
 
         movieAdapter.apply {
-            setDataSource(moviesViewModel.getMovieDatas(context))
+            setDataSource(moviesViewModel.getMovieDatas())
             setItemClickListener(this@MoviesFragment)
         }
     }

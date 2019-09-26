@@ -52,7 +52,7 @@ class TvShowFragment : Fragment(), OnHomeItemClickListener {
         }
 
         movieAdapter.apply {
-            setDataSource(tvShowViewModel.getTvShowDatas(context))
+            setDataSource(tvShowViewModel.getTvShowDatas())
             setItemClickListener(this@TvShowFragment)
         }
     }
