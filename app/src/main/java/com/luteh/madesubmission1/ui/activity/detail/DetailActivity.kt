@@ -1,29 +1,42 @@
 package com.luteh.madesubmission1.ui.activity.detail
 
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Constants
 import com.luteh.madesubmission1.model.HomeData
-import com.luteh.madesubmission1.R
 import kotlinx.android.synthetic.main.detail_activity.*
 
 class DetailActivity : AppCompatActivity() {
+
+    private lateinit var detailViewModel: DetailViewModel
+
+    private lateinit var homeData: HomeData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
-        title = "Detail"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        homeData = intent.getParcelableExtra(Constants.KEY_BUNDLE_HOME_DATA)
 
-        val homeData: HomeData = intent.getParcelableExtra(Constants.KEY_BUNDLE_HOME_DATA)
-
-        setupView(homeData)
+        initActionBar()
+        initViewModel()
+        setupView()
     }
 
-    private fun setupView(homeData: HomeData) {
-        homeData.let {
+    private fun initActionBar() {
+        title = getString(R.string.title_detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun initViewModel() {
+        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        detailViewModel.homeData = homeData
+    }
+
+    private fun setupView() {
+        detailViewModel.homeData?.let {
             iv_detail.setImageResource(it.imageResId)
             tv_detail_title.text = it.title
             tv_detail_overview.text = it.overview
