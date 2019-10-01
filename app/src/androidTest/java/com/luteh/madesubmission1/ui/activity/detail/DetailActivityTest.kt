@@ -16,7 +16,7 @@ import org.junit.Test
  * Created by Luthfan Maftuh on 9/26/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class DetailViewModelTest {
+class DetailActivityTest {
 
     private val homeData = FakeHomeDataFactory.getMovieDatas()[0]
 
