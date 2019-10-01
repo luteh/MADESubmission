@@ -1,6 +1,5 @@
 package com.luteh.madesubmission1.data
 
-import android.content.Context
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.model.HomeData
 

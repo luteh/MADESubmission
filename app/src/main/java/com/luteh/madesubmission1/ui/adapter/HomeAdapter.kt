@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.luteh.madesubmission1.model.HomeData
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.model.HomeData
 import kotlinx.android.synthetic.main.home_item.view.*
 
 /**
