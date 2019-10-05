@@ -16,16 +16,19 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
-        title = "Detail"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         val bundleData: Any = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
 
+        initActionBar()
         if (bundleData is MovieData) {
             setupView(bundleData)
         } else {
             setupView(bundleData as TvShowData)
         }
+    }
+
+    private fun initActionBar() {
+        title = getString(R.string.title_detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setupView(homeData: MovieData) {

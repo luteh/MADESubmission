@@ -21,13 +21,17 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
-        title = "Home"
 
+        initActionBar()
         setupView()
 
         val currentLanguageCode = Locale.getDefault().toString()
         Commons.currentLanguage.value =
             if (currentLanguageCode.contains("en")) LANGUAGE_CODE_ENGLISH else LANGUAGE_CODE_INDONESIAN
+    }
+
+    private fun initActionBar() {
+        title = getString(R.string.title_home)
     }
 
     private fun setupView() {
