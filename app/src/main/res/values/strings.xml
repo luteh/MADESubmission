@@ -17,5 +17,9 @@
     <string name="label_retry">Retry</string>
     <string name="title_discover">Discover</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_detail" translatable="false">Detail</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="label_movie_image_detail" translatable="false">Movie image detail</string>
+    <string name="label_home_image_item" translatable="false">Home image item</string>
 
 </resources>

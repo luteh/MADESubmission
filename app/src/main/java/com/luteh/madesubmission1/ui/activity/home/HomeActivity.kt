@@ -1,21 +1,18 @@
 package com.luteh.madesubmission1.ui.activity.home
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.ACTION_LOCALE_SETTINGS
 import android.view.Menu
 import android.view.MenuItem
-import com.luteh.madesubmission1.*
+import androidx.appcompat.app.AppCompatActivity
+import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.Commons
+import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
+import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
 import com.luteh.madesubmission1.ui.fragment.movies.MovieFragment
 import com.luteh.madesubmission1.ui.fragment.tvshow.TvShowFragment
 import kotlinx.android.synthetic.main.home_activity.*
-import android.provider.Settings.ACTION_LOCALE_SETTINGS
-import android.content.Intent
-import android.util.Log
-import com.luteh.madesubmission1.common.Commons
-import com.luteh.madesubmission1.common.Commons.currentLanguage
-import com.luteh.madesubmission1.common.constant.AppConstant
-import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_ENGLISH
-import com.luteh.madesubmission1.common.constant.AppConstant.LANGUAGE_CODE_INDONESIAN
 import java.util.*
 
 
