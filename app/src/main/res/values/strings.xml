@@ -14,6 +14,8 @@
     <string name="title_tv_show">Tv Shows</string>
     <string name="title_detail" translatable="false">Detail</string>
     <string name="title_home" translatable="false">Home</string>
+    <string name="label_movie_image_detail" translatable="false">Movie image detail</string>
+    <string name="label_home_image_item" translatable="false">Home image item</string>
 
     <string-array name="caption_overview_movies">
         <item>As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.</item>
