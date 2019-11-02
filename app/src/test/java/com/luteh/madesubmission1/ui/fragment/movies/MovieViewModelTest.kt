@@ -3,13 +3,11 @@ package com.luteh.madesubmission1.ui.fragment.movies
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.movie.MovieResponse
 import io.reactivex.Single
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
 
@@ -46,7 +44,5 @@ class MovieViewModelTest {
         viewModel.getMovieData("en-US")
 
         assertNotNull(viewModel.movieDatas)
-//        assert
-//        assertEquals(20, viewModel.movieDatas.value?.size)
     }
 }

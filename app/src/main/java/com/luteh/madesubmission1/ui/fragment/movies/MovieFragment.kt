@@ -3,12 +3,11 @@ package com.luteh.madesubmission1.ui.fragment.movies
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.Commons
 import com.luteh.madesubmission1.common.base.BaseFragment
@@ -21,9 +20,7 @@ import com.luteh.madesubmission1.ui.fragment.movies.adapter.OnMovieItemClickList
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.no_connection.*
-import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.yesButton
 
 /**
  * A simple [Fragment] subclass.

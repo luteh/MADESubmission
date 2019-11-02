@@ -52,7 +52,6 @@ ext {
     kodein_version = '5.2.0'
     lifecycle_version = '2.0.0'
     glide_version = '4.9.0'
-    archLifecycleVersion = '2.0.0'
     archVersion = '1.1.1'
     androidXTestVersion = '1.1.0'
     junitVersion = '4.12'
@@ -78,7 +77,7 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    testImplementation "androidx.arch.core:core-testing:$archLifecycleVersion"
+    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
     // Dependencies for Android unit tests
     androidTestImplementation "junit:junit:$junitVersion"
@@ -91,7 +90,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-    androidTestImplementation "androidx.arch.core:core-testing:$archLifecycleVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
     // Android Material Design
     implementation 'com.google.android.material:material:1.1.0-beta01'

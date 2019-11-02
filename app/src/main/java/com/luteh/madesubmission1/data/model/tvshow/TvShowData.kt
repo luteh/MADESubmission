@@ -4,7 +4,7 @@ package com.luteh.madesubmission1.data.model.tvshow
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.util.ArrayList
+import java.util.*
 
 data class TvShowData(
     @SerializedName("original_name")

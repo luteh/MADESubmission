@@ -1,11 +1,10 @@
 package com.luteh.madesubmission1.ui.activity.detail
 
-import androidx.appcompat.app.AppCompatActivity
-
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.R
+import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.movie.MovieData
 import com.luteh.madesubmission1.data.model.tvshow.TvShowData
 import kotlinx.android.synthetic.main.detail_activity.*
