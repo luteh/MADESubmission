@@ -15,7 +15,7 @@ import com.luteh.madesubmission1.data.model.db.TvShowData
  * Created by Luthfan Maftuh on 7/5/2019.
  * Email luthfanmaftuh@gmail.com
  */
-@Database(entities = [MovieData::class, TvShowData::class], version = 3)
+@Database(entities = [MovieData::class, TvShowData::class], version = 3, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class MyDatabase : RoomDatabase() {
 
