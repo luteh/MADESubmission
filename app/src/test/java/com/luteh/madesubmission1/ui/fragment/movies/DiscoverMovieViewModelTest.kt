@@ -16,7 +16,7 @@ import org.mockito.MockitoAnnotations
  * Created by Luthfan Maftuh on 10/6/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class MovieViewModelTest {
+class DiscoverMovieViewModelTest {
 
     @Mock
     private lateinit var myRepository: MyRepository

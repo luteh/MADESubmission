@@ -16,7 +16,7 @@ import org.mockito.MockitoAnnotations
  * Created by Luthfan Maftuh on 10/27/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class TvShowViewModelTest {
+class DiscoverTvShowViewModelTest {
     @Mock
     private lateinit var myRepository: MyRepository
 
