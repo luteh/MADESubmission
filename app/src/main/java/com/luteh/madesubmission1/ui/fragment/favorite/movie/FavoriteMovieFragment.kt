@@ -12,7 +12,7 @@ import com.luteh.madesubmission1.common.constant.AppConstant
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.ui.activity.detail.DetailActivity
 import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovieItemListener
-import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMoviePagedAdapter
+import com.luteh.madesubmission1.ui.fragment.favorite.movie.adapter.FavoriteMovieAdapter
 import kotlinx.android.synthetic.main.common_loading.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -26,7 +26,7 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieItemListener, Favorit
     private lateinit var viewModel: FavoriteMovieViewModel
 
     //    private val movieAdapter = FavoriteMovieAdapter(this)
-    private val movieAdapter = FavoriteMoviePagedAdapter(this)
+    private val movieAdapter = FavoriteMovieAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +41,6 @@ class FavoriteMovieFragment : BaseFragment(), FavoriteMovieItemListener, Favorit
 
         initViewModel()
         setupRecyclerView()
-
-//        viewModel.loadAllMovies()
     }
 
     private fun initViewModel() {

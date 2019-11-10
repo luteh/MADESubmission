@@ -12,7 +12,7 @@ import com.luteh.madesubmission1.data.model.db.MovieData
  * Created by Luthfan Maftuh on 11/10/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class FavoriteMoviePagedAdapter(
+class FavoriteMovieAdapter(
     private val favoriteMovieItemListener: FavoriteMovieItemListener
 ) :
     PagedListAdapter<MovieData, FavoriteMovieViewHolder>(

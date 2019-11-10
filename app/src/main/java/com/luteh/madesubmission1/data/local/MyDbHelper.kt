@@ -20,6 +20,6 @@ interface MyDbHelper {
 
     fun saveTvShow(tvShowDb: TvShowData): Completable
     fun getTvShowById(tvShowId: Int): Single<TvShowData>
-    fun loadAllTvShows(): Flowable<List<TvShowData>>
+    fun loadAllTvShows(): DataSource.Factory<Int, TvShowData>
     fun deleteTvShowById(tvShowId: Int): Completable
 }

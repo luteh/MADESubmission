@@ -1,6 +1,7 @@
 package com.luteh.madesubmission1.data
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.luteh.madesubmission1.common.constant.AppConstant.PAGE_SIZE
@@ -38,8 +39,8 @@ class MyRepositoryImpl(
     override fun saveTvShow(tvShowDb: TvShowData): Completable =
         myDbHelper.saveTvShow(tvShowDb)
 
-    override fun loadAllTvShows(): Flowable<List<TvShowData>> =
-        myDbHelper.loadAllTvShows()
+    override fun loadAllTvShows(): LiveData<PagedList<TvShowData>> =
+        LivePagedListBuilder(myDbHelper.loadAllTvShows(), PAGE_SIZE).build()
 
     override fun deleteTvShowById(tvShowId: Int) =
         myDbHelper.deleteTvShowById(tvShowId)

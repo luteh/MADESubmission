@@ -26,7 +26,7 @@ class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
     override fun saveTvShow(tvShowDb: TvShowData): Completable =
         myDatabase.tvShowDao().insertTvShow(tvShowDb)
 
-    override fun loadAllTvShows(): Flowable<List<TvShowData>> =
+    override fun loadAllTvShows(): DataSource.Factory<Int, TvShowData> =
         myDatabase.tvShowDao().loadAllTvShows()
 
     override fun deleteTvShowById(tvShowId: Int) =

@@ -27,6 +27,6 @@ interface MyRepository {
 
     fun saveTvShow(tvShowDb: TvShowData): Completable
     fun getTvShowById(tvShowId: Int): Single<TvShowData>
-    fun loadAllTvShows(): Flowable<List<TvShowData>>
+    fun loadAllTvShows(): LiveData<PagedList<TvShowData>>
     fun deleteTvShowById(tvShowId: Int): Completable
 }

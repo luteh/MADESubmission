@@ -1,8 +1,10 @@
 package com.luteh.madesubmission1.ui.fragment.favorite.tvshow.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.data.model.db.TvShowData
 
@@ -12,9 +14,7 @@ import com.luteh.madesubmission1.data.model.db.TvShowData
  */
 class FavoriteTvShowAdapter(
     private val favoriteTvShowItemListener: FavoriteTvShowItemListener
-) : RecyclerView.Adapter<FavoriteTvShowViewHolder>() {
-
-    private var dataSources: List<TvShowData> = emptyList()
+) : PagedListAdapter<TvShowData, FavoriteTvShowViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteTvShowViewHolder =
         FavoriteTvShowViewHolder(
@@ -26,15 +26,22 @@ class FavoriteTvShowAdapter(
             favoriteTvShowItemListener
         )
 
-    override fun getItemCount(): Int = dataSources.size
-
     override fun onBindViewHolder(holder: FavoriteTvShowViewHolder, position: Int) {
-        val data = dataSources[position]
+        val data = getItem(position)
         holder.bindTo(data)
     }
 
-    fun setDataSource(data: List<TvShowData>) {
-        dataSources = data
-        notifyDataSetChanged()
+    companion object {
+
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TvShowData>() {
+            override fun areItemsTheSame(oldNote: TvShowData, newNote: TvShowData): Boolean {
+                return oldNote.name.equals(newNote.name)
+            }
+
+            @SuppressLint("DiffUtilEquals")
+            override fun areContentsTheSame(oldNote: TvShowData, newNote: TvShowData): Boolean {
+                return oldNote == newNote
+            }
+        }
     }
 }

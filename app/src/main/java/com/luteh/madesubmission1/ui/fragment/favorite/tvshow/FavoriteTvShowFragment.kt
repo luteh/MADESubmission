@@ -21,7 +21,7 @@ import org.jetbrains.anko.support.v4.startActivity
  * Created by Luthfan Maftuh on 7/11/2019.
  * Email luthfanmaftuh@gmail.com
  */
-class FavoriteTvShowFragment: BaseFragment(), FavoriteTvShowItemListener, FavoriteTvShowNavigator {
+class FavoriteTvShowFragment : BaseFragment(), FavoriteTvShowItemListener, FavoriteTvShowNavigator {
 
     private lateinit var viewModel: FavoriteTvShowViewModel
 
@@ -40,8 +40,6 @@ class FavoriteTvShowFragment: BaseFragment(), FavoriteTvShowItemListener, Favori
 
         initViewModel()
         setupRecyclerView()
-
-        viewModel.loadAllTvShows()
     }
 
     private fun initViewModel() {
@@ -59,8 +57,8 @@ class FavoriteTvShowFragment: BaseFragment(), FavoriteTvShowItemListener, Favori
             }
         })
 
-        viewModel.tvShowDataList.observe(this, Observer {
-            tvShowAdapter.setDataSource(it)
+        viewModel.loadAllTvShows().observe(this, Observer {
+            tvShowAdapter.submitList(it)
         })
     }
 
