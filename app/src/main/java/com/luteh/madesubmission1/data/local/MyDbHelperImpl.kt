@@ -1,5 +1,6 @@
 package com.luteh.madesubmission1.data.local
 
+import androidx.paging.DataSource
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
@@ -16,7 +17,7 @@ class MyDbHelperImpl(private val myDatabase: MyDatabase) : MyDbHelper {
     override fun saveMovie(movieDb: MovieData): Completable =
         myDatabase.movieDao().insertMovie(movieDb)
 
-    override fun loadAllMovies(): Flowable<List<MovieData>> =
+    override fun loadAllMovies(): DataSource.Factory<Int, MovieData> =
         myDatabase.movieDao().loadAllMovies()
 
     override fun deleteMovieById(movieId: Int) =

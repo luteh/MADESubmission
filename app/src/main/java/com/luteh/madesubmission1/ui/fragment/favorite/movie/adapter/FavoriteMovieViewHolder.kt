@@ -17,9 +17,9 @@ class FavoriteMovieViewHolder(
     private val favoriteMovieItemListener: FavoriteMovieItemListener
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bindTo(data: MovieData) {
+    fun bindTo(data: MovieData?) {
 
-        data.let {
+        data?.let {
             with(itemView) {
                 tv_main_title_item.text = it.title
                 tv_main_release_date_item.text = it.releaseDate

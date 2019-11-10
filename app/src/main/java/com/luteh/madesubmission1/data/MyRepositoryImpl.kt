@@ -1,5 +1,9 @@
 package com.luteh.madesubmission1.data
 
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.luteh.madesubmission1.common.constant.AppConstant.PAGE_SIZE
 import com.luteh.madesubmission1.data.local.MyDbHelper
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
@@ -25,8 +29,8 @@ class MyRepositoryImpl(
     override fun saveMovie(movieDb: MovieData): Completable =
         myDbHelper.saveMovie(movieDb)
 
-    override fun loadAllMovies(): Flowable<List<MovieData>> =
-        myDbHelper.loadAllMovies()
+    override fun loadAllMovies(): LiveData<PagedList<MovieData>> =
+        LivePagedListBuilder(myDbHelper.loadAllMovies(), PAGE_SIZE).build()
 
     override fun deleteMovieById(movieId: Int) =
         myDbHelper.deleteMovieById(movieId)

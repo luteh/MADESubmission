@@ -1,5 +1,8 @@
 package com.luteh.madesubmission1.data
 
+import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
+import androidx.paging.PagedList
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
@@ -19,7 +22,7 @@ interface MyRepository {
 
     fun saveMovie(movieDb: MovieData): Completable
     fun getMovieById(movieId: Int): Single<MovieData>
-    fun loadAllMovies(): Flowable<List<MovieData>>
+    fun loadAllMovies(): LiveData<PagedList<MovieData>>
     fun deleteMovieById(movieId: Int): Completable
 
     fun saveTvShow(tvShowDb: TvShowData): Completable

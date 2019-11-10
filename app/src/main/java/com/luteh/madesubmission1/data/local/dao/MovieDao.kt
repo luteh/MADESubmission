@@ -1,5 +1,6 @@
 package com.luteh.madesubmission1.data.local.dao
 
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -23,7 +24,7 @@ interface MovieDao {
     fun getMovieById(movieId: Int): Single<MovieData>
 
     @Query("SELECT * FROM movie_db")
-    fun loadAllMovies(): Flowable<List<MovieData>>
+    fun loadAllMovies(): DataSource.Factory<Int, MovieData>
 
     @Query("DELETE FROM movie_db WHERE id = :movieId")
     fun deleteMovieById(movieId: Int): Completable

@@ -18,4 +18,6 @@ object AppConstant {
     const val DATABASE_NAME = "mydatabase.db"
     const val DATABASE_TABLE_MOVIE = "movie_db"
     const val DATABASE_TABLE_TV_SHOW = "tv_show_db"
+
+    const val PAGE_SIZE = 20
 }
