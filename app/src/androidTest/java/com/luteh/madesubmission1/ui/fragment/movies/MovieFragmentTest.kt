@@ -11,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import com.luteh.madesubmission1.common.utils.EspressoIdlingResource
 import com.luteh.madesubmission1.testing.SingleFragmentActivity
+import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieFragment
 import com.luteh.madesubmission1.utils.RecyclerViewItemCountAssertion
 import org.junit.After
 import org.junit.Before
@@ -25,7 +26,7 @@ import org.junit.Test
 open class MovieFragmentTest {
     @get:Rule
     val activityRule = ActivityTestRule<SingleFragmentActivity>(SingleFragmentActivity::class.java)
-    private val moviesFragment = MovieFragment()
+    private val moviesFragment = DiscoverMovieFragment()
 
     @Before
     fun setUp() {

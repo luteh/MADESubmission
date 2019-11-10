@@ -12,6 +12,7 @@ import androidx.test.rule.ActivityTestRule
 import com.luteh.madesubmission1.R
 import com.luteh.madesubmission1.common.utils.EspressoIdlingResource
 import com.luteh.madesubmission1.testing.SingleFragmentActivity
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowFragment
 import com.luteh.madesubmission1.utils.RecyclerViewItemCountAssertion
 import org.junit.After
 import org.junit.Before
@@ -26,7 +27,7 @@ class TvShowFragmentTest {
 
     @get:Rule
     val activityRule = ActivityTestRule<SingleFragmentActivity>(SingleFragmentActivity::class.java)
-    private val tvShowFragment = TvShowFragment()
+    private val tvShowFragment = DiscoverTvShowFragment()
 
     @Before
     fun setUp() {

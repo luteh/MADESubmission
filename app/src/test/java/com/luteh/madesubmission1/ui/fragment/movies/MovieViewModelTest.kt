@@ -1,7 +1,8 @@
 package com.luteh.madesubmission1.ui.fragment.movies
 
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.movie.MovieResponse
+import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
+import com.luteh.madesubmission1.ui.fragment.discover.movies.DiscoverMovieViewModel
 import io.reactivex.Single
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -20,12 +21,12 @@ class MovieViewModelTest {
     @Mock
     private lateinit var myRepository: MyRepository
 
-    private lateinit var viewModel: MovieViewModel
+    private lateinit var viewModel: DiscoverMovieViewModel
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = MovieViewModel(myRepository)
+        viewModel = DiscoverMovieViewModel(myRepository)
     }
 
     @Test

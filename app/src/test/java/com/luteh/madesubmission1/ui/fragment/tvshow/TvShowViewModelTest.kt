@@ -1,13 +1,15 @@
 package com.luteh.madesubmission1.ui.fragment.tvshow
 
 import com.luteh.madesubmission1.data.MyRepository
-import com.luteh.madesubmission1.data.model.tvshow.TvShowResponse
+import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
+import com.luteh.madesubmission1.ui.fragment.discover.tvshow.DiscoverTvShowViewModel
 import io.reactivex.Single
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 /**
@@ -18,17 +20,17 @@ class TvShowViewModelTest {
     @Mock
     private lateinit var myRepository: MyRepository
 
-    private lateinit var viewModel: TvShowViewModel
+    private lateinit var viewModel: DiscoverTvShowViewModel
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = TvShowViewModel(myRepository)
+        viewModel = DiscoverTvShowViewModel(myRepository)
     }
 
     @Test
     fun fetchMovieData() {
-        Mockito.`when`(myRepository.getTvShowData("en-US")).thenReturn(
+        `when`(myRepository.getTvShowData("en-US")).thenReturn(
             Single.just(
                 TvShowResponse(
                     0,
