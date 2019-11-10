@@ -1,7 +1,6 @@
 package com.luteh.madesubmission1.ui.fragment.favorite.tvshow
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagedList
 import com.luteh.madesubmission1.common.base.BaseViewModel
 import com.luteh.madesubmission1.data.MyRepository

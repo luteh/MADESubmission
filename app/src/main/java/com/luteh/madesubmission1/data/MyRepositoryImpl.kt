@@ -1,7 +1,6 @@
 package com.luteh.madesubmission1.data
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.luteh.madesubmission1.common.constant.AppConstant.PAGE_SIZE
@@ -12,7 +11,6 @@ import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import com.luteh.madesubmission1.data.remote.ApiServiceInterface
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 class MyRepositoryImpl(

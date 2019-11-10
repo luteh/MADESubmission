@@ -1,14 +1,12 @@
 package com.luteh.madesubmission1.data
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.paging.PagedList
 import com.luteh.madesubmission1.data.model.api.movie.MovieResponse
 import com.luteh.madesubmission1.data.model.api.tvshow.TvShowResponse
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 /**

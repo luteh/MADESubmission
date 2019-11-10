@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 /**

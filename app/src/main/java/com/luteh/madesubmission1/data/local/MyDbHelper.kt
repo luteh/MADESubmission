@@ -4,7 +4,6 @@ import androidx.paging.DataSource
 import com.luteh.madesubmission1.data.model.db.MovieData
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 /**
