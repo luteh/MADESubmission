@@ -20,5 +20,9 @@
     <string name="title_like">Like</string>
     <string name="label_message_save_detail_success">Saved to your favorite lists</string>
     <string name="label_message_save_detail_error">Something wrong, please try again</string>
+    <string name="title_detail" translatable="false">Detail</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="label_movie_image_detail" translatable="false">Movie image detail</string>
+    <string name="label_home_image_item" translatable="false">Home image item</string>
 
 </resources>

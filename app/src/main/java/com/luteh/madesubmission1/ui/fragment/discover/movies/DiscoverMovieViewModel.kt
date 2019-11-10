@@ -3,6 +3,7 @@ package com.luteh.madesubmission1.ui.fragment.discover.movies
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
+import com.luteh.madesubmission1.common.utils.EspressoIdlingResource
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.db.MovieData
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,6 +21,7 @@ class DiscoverMovieViewModel(private val myRepository: MyRepository) : BaseViewM
     val movieDatas: MutableLiveData<List<MovieData>> = MutableLiveData()
 
     fun getMovieData(language: String) {
+        EspressoIdlingResource.increment()
         compositeDisposable.add(
             myRepository.getMovieData(language)
                 .subscribeOn(Schedulers.io())
@@ -28,6 +30,10 @@ class DiscoverMovieViewModel(private val myRepository: MyRepository) : BaseViewM
                 .doOnTerminate { mIsLoading.value = false }
                 .subscribe({ response ->
                     movieDatas.value = response.movieData
+
+                    if (!EspressoIdlingResource.getEspressoIdlingResource().isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                 },
                     { throwable ->
                         Log.e(TAG, "getMovieData: ${throwable.message}")

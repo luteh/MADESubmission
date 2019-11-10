@@ -34,15 +34,13 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
-        title = "Detail"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         onInit()
     }
 
     private fun onInit() {
         bundleData = intent.getParcelableExtra(AppConstant.KEY_BUNDLE_HOME_DATA)
 
+        initActionBar()
         initViewModel()
 
         if (bundleData is MovieData) {
@@ -57,6 +55,11 @@ class DetailActivity : AppCompatActivity(), DetailNavigator, KodeinAware {
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
         viewModel.mNavigator = this
+    }
+
+    private fun initActionBar() {
+        title = getString(R.string.title_detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setupView(homeData: MovieData) {

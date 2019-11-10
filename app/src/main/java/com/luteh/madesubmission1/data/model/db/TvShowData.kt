@@ -8,15 +8,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.luteh.madesubmission1.common.constant.AppConstant
+import java.util.*
 
 @Entity(tableName = AppConstant.DATABASE_TABLE_TV_SHOW)
 data class TvShowData(
     @SerializedName("original_name")
     @ColumnInfo(name = "original_name")
     val originalName: String?, // Supernatural
-    /*@SerializedName("genre_ids")
-    @ColumnInfo(name = "genre_ids")
-    val genreIds: IntArray?,*/
     @SerializedName("name")
     val name: String?, // Supernatural
     @SerializedName("popularity")
@@ -50,7 +48,6 @@ data class TvShowData(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-//        parcel.createIntArray(),
         parcel.readString(),
         parcel.readDouble(),
         parcel.createStringArrayList(),
@@ -66,7 +63,6 @@ data class TvShowData(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(originalName)
-//        parcel.writeIntArray(genreIds)
         parcel.writeString(name)
         parcel.writeDouble(popularity)
         parcel.writeStringList(originCountry)
@@ -91,10 +87,6 @@ data class TvShowData(
         other as TvShowData
 
         if (originalName != other.originalName) return false
-        /*if (genreIds != null) {
-            if (other.genreIds == null) return false
-            if (!genreIds.contentEquals(other.genreIds)) return false
-        } else if (other.genreIds != null) return false*/
         if (name != other.name) return false
         if (popularity != other.popularity) return false
         if (originCountry != other.originCountry) return false
@@ -112,7 +104,6 @@ data class TvShowData(
 
     override fun hashCode(): Int {
         var result = originalName?.hashCode() ?: 0
-//        result = 31 * result + (genreIds?.contentHashCode() ?: 0)
         result = 31 * result + (name?.hashCode() ?: 0)
         result = 31 * result + popularity.hashCode()
         result = 31 * result + (originCountry?.hashCode() ?: 0)

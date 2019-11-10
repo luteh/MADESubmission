@@ -3,6 +3,7 @@ package com.luteh.madesubmission1.ui.fragment.discover.tvshow
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.luteh.madesubmission1.common.base.BaseViewModel
+import com.luteh.madesubmission1.common.utils.EspressoIdlingResource
 import com.luteh.madesubmission1.data.MyRepository
 import com.luteh.madesubmission1.data.model.db.TvShowData
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,6 +21,7 @@ class DiscoverTvShowViewModel(private val myRepository: MyRepository) : BaseView
     val tvShowDatas: MutableLiveData<List<TvShowData>> = MutableLiveData()
 
     fun getTvShowData(language: String) {
+        EspressoIdlingResource.increment()
         compositeDisposable.add(
             myRepository.getTvShowData(language)
                 .subscribeOn(Schedulers.io())
@@ -28,9 +30,15 @@ class DiscoverTvShowViewModel(private val myRepository: MyRepository) : BaseView
                 .doOnTerminate { mIsLoading.value = false }
                 .subscribe({ response ->
                     tvShowDatas.value = response.tvShowData
+
+                    if (!EspressoIdlingResource.getEspressoIdlingResource().isIdleNow) {
+                        EspressoIdlingResource.decrement()
+                    }
                 },
-                    { throwable -> Log.e(TAG, "getTvShowData: ${throwable.message}")
-                    mNavigator?.onErrorGetTvShowData()})
+                    { throwable ->
+                        Log.e(TAG, "getTvShowData: ${throwable.message}")
+                        mNavigator?.onErrorGetTvShowData()
+                    })
         )
     }
 }
