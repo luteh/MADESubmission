@@ -8,7 +8,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.luteh.madesubmission1.common.constant.AppConstant
-import java.util.*
 
 @Entity(tableName = AppConstant.DATABASE_TABLE_TV_SHOW)
 data class TvShowData(
